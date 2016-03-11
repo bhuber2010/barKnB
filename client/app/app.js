@@ -18,3 +18,14 @@ angular.module('barKnBApp', [
 
     $locationProvider.html5Mode(true);
   });
+
+// (function($) {
+// 
+// $(document).ready(
+//   $('body').scrollspy({
+//       target: '.navbar-fixed-top',
+//       offset: 60
+//   })
+// )
+//
+// })(jQuery);
