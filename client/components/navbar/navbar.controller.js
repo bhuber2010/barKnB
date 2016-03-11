@@ -4,17 +4,27 @@ class NavbarController {
   //start-non-standard
   menu = [{
     'title': 'Home',
-    'state': 'main'
+    'state': 'welcome'
   }];
 
   isCollapsed = true;
   //end-non-standard
 
-  constructor(Auth) {
+  constructor(Auth, $window, $rootScope) {
+    this.$window = $window;
+    this.$rootScope = $rootScope;
     this.isLoggedIn = Auth.isLoggedIn;
     this.isAdmin = Auth.isAdmin;
     this.getCurrentUser = Auth.getCurrentUser;
+
   }
+
+  $onInit() {
+    console.log(this.$rootScope);
+    this.boolChangeClass = this.$rootScope.boolChangeClass;
+  }
+
+
 }
 
 angular.module('barKnBApp')

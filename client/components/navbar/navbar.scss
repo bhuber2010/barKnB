@@ -29,7 +29,10 @@
 }
 
 .navbar-default .nav > li>a,
+.navbar-default .nav > li>p,
 .navbar-default .nav>li>a:focus {
+    margin: 0;
+    padding: 20px;
     text-transform: uppercase;
     font-size: 13px;
     font-weight: 700;

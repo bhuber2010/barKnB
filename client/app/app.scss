@@ -34,7 +34,7 @@ body {
 
     #app-view {
       margin-top: 60px;
-      min-height: 100%;
+      min-height: calc(100% - 60px);
       min-width: 100%;
     }
 }
@@ -133,6 +133,7 @@ footer {
 // Component styles are injected through grunt
 // injector
 @import 'admin/admin.scss';
+@import 'dashboard/dashboard.scss';
 @import 'main/main.scss';
 @import 'welcome/welcome.scss';
 @import '../components/footer/footer.scss';

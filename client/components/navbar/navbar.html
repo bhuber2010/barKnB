@@ -1,4 +1,4 @@
-<nav id="topNav" class="navbar navbar-default navbar-fixed-top affix-top" ng-controller="NavbarController">
+<nav id="topNav" class="navbar navbar-default navbar-fixed-top" ng-class="{true:'affix-top', false:'affix'}[nav.boolChangeClass]" ng-controller="NavbarController">
   <div class="container-fluid">
     <div class="navbar-header">
       <button class="navbar-toggle" type="button" ng-click="nav.isCollapsed = !nav.isCollapsed">
@@ -15,6 +15,7 @@
             <a ui-sref="{{item.state}}">{{item.title}}</a>
         </li>
         <li ng-show="nav.isAdmin()" ui-sref-active="active"><a ui-sref="admin">Admin</a></li>
+        <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="dashboard">Dashboard</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">

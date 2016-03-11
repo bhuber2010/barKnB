@@ -17,15 +17,17 @@ angular.module('barKnBApp', [
       .otherwise('/');
 
     $locationProvider.html5Mode(true);
-  });
+  })
 
-// (function($) {
-// 
-// $(document).ready(
-//   $('body').scrollspy({
-//       target: '.navbar-fixed-top',
-//       offset: 60
-//   })
-// )
-//
-// })(jQuery);
+  .run(function($rootScope, $window){
+
+    // $rootScope.boolChangeClass = true;
+    $rootScope.$apply(function(){
+      if ($window.pageYOffset >= 80) {
+          $rootScope.boolChangeClass = false;
+      } else {
+          $rootScope.boolChangeClass = true;
+      }
+    })
+
+  })
