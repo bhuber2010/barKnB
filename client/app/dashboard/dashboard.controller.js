@@ -2,15 +2,17 @@
 (function(){
 
 class DashboardComponent {
-  constructor() {
-    this.message = 'Hello';
+  constructor($state, dashdata) {
+    this.message = 'Dashboard Search';
+    this.test = dashdata.test;
   }
 }
 
 angular.module('barKnBApp')
   .component('dashboard', {
     templateUrl: 'app/dashboard/dashboard.html',
-    controller: DashboardComponent
+    controller: DashboardComponent,
+    controllerAs: 'dash'
   });
 
 })();

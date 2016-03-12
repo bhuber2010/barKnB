@@ -20,7 +20,6 @@ class NavbarController {
   }
 
   $onInit() {
-    console.log(this.$rootScope);
     this.boolChangeClass = this.$rootScope.boolChangeClass;
   }
 

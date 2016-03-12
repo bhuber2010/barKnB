@@ -7,5 +7,5 @@ angular.module('barKnBApp')
         url: '/dashboard',
         template: '<dashboard></dashboard>',
         authenticate: 'user'
-      });
+      })
   });
