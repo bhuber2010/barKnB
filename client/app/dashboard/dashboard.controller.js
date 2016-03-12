@@ -3,10 +3,12 @@
 
 class DashboardComponent {
   constructor($state, dashdata) {
+    this.dashdata = dashdata;
     this.message = 'Dashboard Search';
-    this.test = dashdata.test;
+    this.userMode = dashdata.userMode;
   }
 }
+
 
 angular.module('barKnBApp')
   .component('dashboard', {

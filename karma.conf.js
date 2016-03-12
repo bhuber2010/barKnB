@@ -22,6 +22,9 @@ module.exports = function(config) {
       'client/bower_components/angular-socket-io/socket.js',
       'client/bower_components/angular-ui-router/release/angular-ui-router.js',
       'client/bower_components/angular-validation-match/dist/angular-validation-match.min.js',
+      'client/bower_components/angular-bootstrap-toggle-switch/angular-toggle-switch.js',
+      'client/bower_components/bootstrap-switch/dist/js/bootstrap-switch.js',
+      'client/bower_components/angular-bootstrap-switch/dist/angular-bootstrap-switch.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'node_modules/socket.io-client/socket.io.js',

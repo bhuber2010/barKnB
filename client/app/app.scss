@@ -75,6 +75,13 @@ p {
     margin-bottom: 20px;
 }
 
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
 .wide-space {
     letter-spacing: 1.6px;
 }
@@ -133,6 +140,7 @@ footer {
 // Component styles are injected through grunt
 // injector
 @import 'admin/admin.scss';
+@import 'dashboard/caretaker/caretaker.scss';
 @import 'dashboard/dashSearch/dashSearch.scss';
 @import 'dashboard/dashboard.scss';
 @import 'main/main.scss';

@@ -10,7 +10,9 @@ angular.module('barKnBApp', [
   'btford.socket-io',
   'ui.router',
   'ui.bootstrap',
-  'validation.match'
+  'validation.match',
+  'toggle-switch',
+  'frapontillo.bootstrap-switch'
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider

@@ -1,4 +1,26 @@
-<div>
-  <div class="">This is dashdata from dashboard: {{dash.test}}</div>
-  <button type="button" ui-sref="dashSearch">{{dash.message}}</button>
+<div class="flex-container">
+  <div class="page-header care-type">
+    <bs-switch
+        ng-model="dash.userMode.selectedMode"
+        type="checkbox"
+        switch-size="large"
+        switch-label="Mode"
+        switch-icon="{{ icon }}"
+        switch-on-text="Care for Dogs"
+        switch-off-text="Help please"
+        switch-on-color="primary"
+        switch-off-color="info"
+        switch-label-width="120px"
+        switch-handle-width="120px"
+        switch-change="onChange()"
+        ng-true-value="'{{dash.userMode.care.name}}'"
+        ng-false-value="'{{dash.userMode.need.name}}'">
+  </div>
+  <div class="thumbnail care-type" ng-repeat="actv in dash.dashdata.activities" ui-sref='dashSearch({mode: dash.userMode.selectedMode, activity: actv.id})'>
+    <img class="thumbnail-img" src="{{actv.thumbnail}}" alt="...">
+    <div class="caption flex-col-center">
+      <h3>{{actv.name}}</h3>
+      <p>{{actv.details}}</p>
+    </div>
+  </div>
 </div>

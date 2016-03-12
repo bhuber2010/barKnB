@@ -1,7 +1,7 @@
 'use strict';
 (function(){
 
-class DashSearchComponent {
+class CaretakerComponent {
   constructor(dashdata, $stateParams) {
     this.dashdata = dashdata;
     console.log(dashdata.userMode.selectedMode, $stateParams.activity);
@@ -10,10 +10,10 @@ class DashSearchComponent {
 }
 
 angular.module('barKnBApp')
-  .component('dashSearch', {
-    templateUrl: 'app/dashboard/dashSearch/dashSearch.html',
-    controller: DashSearchComponent,
-    controllerAs: 'dashsearch'
+  .component('caretaker', {
+    templateUrl: 'app/dashboard/caretaker/caretaker.html',
+    controller: CaretakerComponent,
+    controllerAs: 'ct'
   });
 
 })();
