@@ -11,12 +11,12 @@ angular.module('barKnBApp')
       })
       .state('logout', {
         url: '/logout?referrer',
-        referrer: 'main',
+        referrer: 'welcome',
         template: '',
         controller: function($state, Auth) {
           var referrer = $state.params.referrer ||
                           $state.current.referrer ||
-                          'main';
+                          'welcome';
           Auth.logout();
           $state.go(referrer);
         }
@@ -38,6 +38,13 @@ angular.module('barKnBApp')
         url: '/settings',
         templateUrl: 'app/account/settings/settings.html',
         controller: 'SettingsController',
+        controllerAs: 'vm',
+        authenticate: true
+      })
+      .state('password', {
+        url: '/settings/password',
+        templateUrl: 'app/account/password/password.html',
+        controller: 'PasswordController',
         controllerAs: 'vm',
         authenticate: true
       })

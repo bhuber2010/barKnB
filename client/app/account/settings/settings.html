@@ -1,50 +1,69 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <h2>Change Password</h2>
+      <h2>Edit Settings</h2>
     </div>
     <div class="col-sm-12">
-      <form class="form" name="form" ng-submit="vm.changePassword(form)" novalidate>
+      <form class="form" name="settingsform" ng-submit="vm.updateSettings(form)" novalidate>
 
         <div class="form-group">
-          <label>Current Password</label>
-
-          <input type="password" name="password" class="form-control" ng-model="vm.user.oldPassword"
-                 mongoose-error/>
-          <p class="help-block" ng-show="form.password.$error.mongoose">
+          <label>Are you an owner?</label>
+          <bs-switch
+              ng-model="vm.settings.owner"
+              type="checkbox"
+              switch-label=""
+              switch-icon=""
+              switch-on-text="Owner"
+              switch-off-text="Sitter Only"
+              switch-on-color="primary"
+              switch-off-color="info"
+              switch-label-width="60px"
+              switch-handle-width="60px"
+              ng-true-value="'{{dash.userMode.care.name}}'"
+              ng-false-value="'{{dash.userMode.need.name}}'"
+              mongoose-error>
+          <p class="help-block" ng-show="settingsform.searchradius.$error.mongoose">
               {{ vm.errors.other }}
           </p>
         </div>
 
         <div class="form-group">
-          <label>New Password</label>
-
-          <input type="password" name="newPassword" class="form-control" ng-model="vm.user.newPassword"
-                 ng-minlength="3"
-                 required/>
-          <p class="help-block"
-             ng-show="(form.newPassword.$error.minlength || form.newPassword.$error.required) && (form.newPassword.$dirty || vm.submitted)">
-            Password must be at least 3 characters.
+          <label>Default Search Radius</label>
+          <input type="text" name="searchradius" class="form-control" ng-model="vm.settings.searchradius"
+                 mongoose-error/>
+          <p class="help-block" ng-show="settingsform.searchradius.$error.mongoose">
+              {{ vm.errors.other }}
           </p>
         </div>
 
         <div class="form-group">
-          <label>Confirm New Password</label>
-
-          <input type="password" name="confirmPassword" class="form-control" ng-model="vm.user.confirmPassword"
-                 match="vm.user.newPassword"
-                 ng-minlength="3"
-                 required=""/>
-          <p class="help-block"
-             ng-show="form.confirmPassword.$error.match && vm.submitted">
-            Passwords must match.
+          <label>Available now</label>
+          <input type="text" name="now" class="form-control" ng-model="vm.settings.now"
+                 mongoose-error/>
+          <p class="help-block" ng-show="settingsform.now.$error.mongoose">
+              {{ vm.errors.other }}
           </p>
-
         </div>
 
-        <p class="help-block"> {{ vm.message }} </p>
+        <div class="form-group">
+          <label>Calendar publicly viewable</label>
+          <input type="text" name="calendar" class="form-control" ng-model="vm.settings.calendar"
+                 mongoose-error/>
+          <p class="help-block" ng-show="settingsform.calendar.$error.mongoose">
+              {{ vm.errors.other }}
+          </p>
+        </div>
 
-        <button class="btn btn-lg btn-primary" type="submit">Save changes</button>
+        <div class="form-group">
+          <label>Account active</label>
+          <input type="text" name="accstatus" class="form-control" ng-model="vm.settings.accstatus"
+                 mongoose-error/>
+          <p class="help-block" ng-show="settingsform.accstatus.$error.mongoose">
+              {{ vm.errors.other }}
+          </p>
+        </div>
+
+        <button class="btn btn-lg btn-primary" type="submit">Save Settings</button>
       </form>
     </div>
   </div>
