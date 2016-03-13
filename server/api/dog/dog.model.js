@@ -2,10 +2,16 @@
 
 import mongoose from 'mongoose';
 
-var DogSchema = new mongoose.Schema({
+const DogSchema = new mongoose.Schema({
   name: String,
-  info: String,
-  active: Boolean
+  breed: String,
+  photo: String,
+  bio: String,
+  vet_contact: String,
+  rating: Number,
+  // requests: [Request.schema],
+  // shots: [Shot.schema],
+  // comments: [Comment.schema]
 });
 
 export default mongoose.model('Dog', DogSchema);

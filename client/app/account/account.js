@@ -33,7 +33,14 @@ angular.module('barKnBApp')
         controller: 'SettingsController',
         controllerAs: 'vm',
         authenticate: true
-      });
+      })
+      .state('newdog', {
+        url: '/newdog',
+        templateUrl: 'app/account/newDog/newdog.html',
+        controller: 'NewDogController',
+        controllerAs: 'nd',
+        authenticate: true
+      })
   })
   .run(function($rootScope) {
     $rootScope.$on('$stateChangeStart', function(event, next, nextParams, current) {

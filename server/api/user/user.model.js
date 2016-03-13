@@ -4,10 +4,10 @@ import crypto from 'crypto';
 import mongoose from 'mongoose';
 mongoose.Promise = require('bluebird');
 import {Schema} from 'mongoose';
-import dogSchema from '../dog/dog.model';
-// import settingSchema from '../settings/settings.model';
+import Dog from '../dog/dog.model';
+// import Settings from '../settings/settings.model';
 
-const authTypes = ['github', 'twitter', 'facebook', 'google'];
+const authTypes = ['google'];
 
 var UserSchema = new Schema({
   name: String,
@@ -19,11 +19,11 @@ var UserSchema = new Schema({
   city: String,
   state: String,
   calendar: String,
-  dogs: [dogSchema],
+  dogs: [Dog.schema],
   about: String,
   telephone: String,
   backgroundCheck: Boolean,
-  // settings: [settingSchema],
+  // settings: [Settings.schema],
   role: {
     type: String,
     default: 'user'

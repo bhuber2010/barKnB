@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2>Add your pooch!</h2>
+    </div>
+    <div class="col-sm-12">
+      <form class="form" name="newdog" ng-submit="nd.submitDog(form)" novalidate>
+
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" name="name" class="form-control" ng-model="nd.dog.name"
+                 mongoose-error/>
+          <p class="help-block" ng-show="form.name.$error.mongoose">
+              {{ nd.errors.other }}
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label>Breed</label>
+          <input type="text" name="breed" class="form-control" ng-model="nd.dog.breed"
+                 mongoose-error/>
+          <p class="help-block" ng-show="form.breed.$error.mongoose">
+              {{ nd.errors.other }}
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label>Photo</label>
+          <input type="text" name="photo" class="form-control" ng-model="nd.dog.photo" placeholder="http://www.site.com/my-dog-picture.jpg"
+                 mongoose-error/>
+          <p class="help-block" ng-show="form.photo.$error.mongoose">
+              {{ nd.errors.other }}
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label>Bio</label>
+          <input type="text" name="bio" class="form-control" ng-model="nd.dog.bio"
+                 mongoose-error/>
+          <p class="help-block" ng-show="form.bio.$error.mongoose">
+              {{ nd.errors.other }}
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label>Shot</label>
+          <input type="text" name="shot" class="form-control" ng-model="nd.dog.shot"
+                 mongoose-error/>
+          <p class="help-block" ng-show="form.shot.$error.mongoose">
+              {{ nd.errors.other }}
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label>Vet Contact Info</label>
+          <input type="text" name="vet_contact" class="form-control" ng-model="nd.dog.vet_contact"
+                 mongoose-error/>
+          <p class="help-block" ng-show="form.vet_contact.$error.mongoose">
+              {{ nd.errors.other }}
+          </p>
+        </div>
+
+        <button class="btn btn-lg btn-primary" type="submit">Add dog</button>
+      </form>
+    </div>
+  </div>
+</div>
