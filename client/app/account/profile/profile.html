@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="flex-row">
+      <h1>Profile</h1>
+      <div class="btn-group">
+        <button class="btn btn-success" type="button" name="adddog" ui-sref="newdog">Add Dog</button>
+        <button class="btn btn-warning" type="button" name="changepwd" ui-sref="settings">Change Password</button>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <form class="form" name="newdog" ng-submit="nd.submitDog(form)" novalidate>
+
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" name="name" class="form-control" ng-model="profile.user.name"
+                 mongoose-error/>
+          <p class="help-block" ng-show="newdog.name.$error.mongoose">
+              {{ profile.errors.other }}
+          </p>
+        </div>
+
+        <button class="btn btn-lg btn-primary" type="submit">Update Profile</button>
+      </form>
+    </div>
+  </div>
+</div>

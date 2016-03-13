@@ -27,6 +27,13 @@ angular.module('barKnBApp')
         controller: 'SignupController',
         controllerAs: 'vm'
       })
+      .state('profile', {
+        url: '/profile',
+        templateUrl: 'app/account/profile/profile.html',
+        controller: 'ProfileController',
+        controllerAs: 'profile',
+        authenticate: true
+      })
       .state('settings', {
         url: '/settings',
         templateUrl: 'app/account/settings/settings.html',
