@@ -1,13 +1,15 @@
 'use strict';
 
 class LoginController {
-  constructor(Auth, $state) {
+  constructor(Auth, $state, $http, currentuserdata) {
     this.user = {};
     this.errors = {};
     this.submitted = false;
 
     this.Auth = Auth;
+    this.$http = $http;
     this.$state = $state;
+    this.currentuserdata = currentuserdata;
   }
 
   login(form) {
@@ -19,7 +21,9 @@ class LoginController {
         password: this.user.password
       })
       .then(() => {
-        // Logged in, redirect to home
+
+        console.log(this.Auth.getCurrentUser());
+
         this.$state.go('dashboard');
       })
       .catch(err => {

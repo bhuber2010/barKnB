@@ -42,7 +42,7 @@ const SettingSchema = new mongoose.Schema({
   calendar_public: Boolean
 });
 
-const Settings = mongoose.model('Settings', SettingSchema);
+export const Settings = mongoose.model('Settings', SettingSchema);
 
 /**
  * Virtuals

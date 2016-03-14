@@ -6,7 +6,8 @@ import User from '../user/user.model';
 import Request from '../request/request.model';
 
 const DogSchema = new mongoose.Schema({
-  owner: { type: Schema.Types.ObjectId, ref: 'User' },
+  owner_user: { type: Schema.Types.ObjectId, ref: 'User' },
+  owner: Boolean,
   name: String,
   breed: String,
   photo: String,

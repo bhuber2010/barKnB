@@ -10,6 +10,9 @@ mongoose.Promise = require('bluebird');
 import config from './config/environment';
 import http from 'http';
 
+//send server side log to browser
+var nodemonkey = require('node-monkey').start({host: "0.0.0.0", port:"50500"});
+
 // Connect to MongoDB
 mongoose.connect(config.mongo.uri, config.mongo.options);
 mongoose.connection.on('error', function(err) {
