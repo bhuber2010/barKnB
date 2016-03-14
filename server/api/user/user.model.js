@@ -5,7 +5,6 @@ import mongoose from 'mongoose';
 mongoose.Promise = require('bluebird');
 import {Schema} from 'mongoose';
 import Dog from '../dog/dog.model';
-// import Settings from '../settings/settings.model';
 
 const authTypes = ['google'];
 
@@ -19,11 +18,11 @@ var UserSchema = new Schema({
   city: String,
   state: String,
   calendar: String,
-  dogs: [Dog.schema],
+  dogs: [{ type: Schema.Types.ObjectId, ref: 'Dog' }],
   about: String,
   telephone: String,
   backgroundCheck: Boolean,
-  // settings: [Settings.schema],
+  settings: { type: Schema.Types.ObjectId, ref: 'Settings' },
   role: {
     type: String,
     default: 'user'
@@ -34,6 +33,16 @@ var UserSchema = new Schema({
   google: {},
   github: {}
 });
+
+const SettingSchema = new mongoose.Schema({
+  owner: Boolean,
+  search_radius: Number,
+  available_now: Boolean,
+  acnt_active: Boolean,
+  calendar_public: Boolean
+});
+
+const Settings = mongoose.model('Settings', SettingSchema);
 
 /**
  * Virtuals
