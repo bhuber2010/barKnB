@@ -12,6 +12,7 @@ router.get('/me', auth.isAuthenticated(), controller.me);
 router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 router.put('/:id/profile', auth.isAuthenticated(), controller.updateProfile);
 router.put('/:id/settings', auth.isAuthenticated(), controller.updateUserSettings);
+router.put('/:id/dog', auth.isAuthenticated(), controller.updateDogs);
 router.get('/:id', auth.isAuthenticated(), controller.show);
 router.post('/', controller.create);
 

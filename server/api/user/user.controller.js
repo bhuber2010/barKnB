@@ -2,14 +2,54 @@
 
 import User from './user.model';
 import passport from 'passport';
+import _ from 'lodash';
 import config from '../../config/environment';
 import jwt from 'jsonwebtoken';
+
+function respondWithResult(res, statusCode) {
+  statusCode = statusCode || 200;
+  return function(entity) {
+    if (entity) {
+      res.status(statusCode).json(entity);
+    }
+  };
+}
 
 function validationError(res, statusCode) {
   statusCode = statusCode || 422;
   return function(err) {
     res.status(statusCode).json(err);
   }
+}
+
+function handleEntityNotFound(res) {
+  return function(entity) {
+    if (!entity) {
+      res.status(404).end();
+      return null;
+    }
+    return entity;
+  };
+}
+
+function saveUpdates(updates) {
+  return function(entity) {
+    var updated = _.merge(entity, updates);
+    console.log('updates: ', updates);
+    console.log('entity: ', entity);
+    console.log('updated: ', updated);
+    return updated.save()
+      .then(updated => {
+        return updated;
+      });
+  };
+}
+
+function saveUpdates2(updates) {
+  return updates.save()
+    .then(updates => {
+      return updates;
+    });
 }
 
 function handleError(res, statusCode) {
@@ -97,6 +137,19 @@ export function changePassword(req, res, next) {
         return res.status(403).end();
       }
     });
+}
+
+/**
+ * Update a users list of dogs
+ */
+export function updateDogs(req, res, next) {
+  var userId = req.user._id;
+  console.log(userId, req.body);
+  return User.findById(req.params.id).exec()
+    .then(handleEntityNotFound(res))
+    .then(saveUpdates(req.body))
+    .then(respondWithResult(res))
+    .catch(handleError(res));
 }
 
 /**

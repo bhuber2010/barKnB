@@ -24,6 +24,12 @@ function UserResource($resource) {
         controller: 'settings'
       }
     },
+    updateDog: {
+      method: 'PUT',
+      params: {
+        controller: 'dog'
+      }
+    },
     get: {
       method: 'GET',
       params: {

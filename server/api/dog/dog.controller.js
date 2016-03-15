@@ -76,6 +76,7 @@ export function show(req, res) {
 
 // Creates a new Dog in the DB
 export function create(req, res) {
+  console.log(req.body);
   return Dog.create(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));

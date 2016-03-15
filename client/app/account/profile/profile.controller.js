@@ -1,14 +1,13 @@
 'use strict';
 
 class ProfileController {
-  constructor($scope, $state, Auth, dashdata, currentuserdata, User, Util) {
+  constructor($scope, $state, currentuserdata, User, Util) {
     this.errors = {};
     this.submitted = false;
 
     this.currentuserdata = currentuserdata;
     this.safeCb = Util.safeCb;
     this.$state = $state;
-    this.Auth = Auth;
     this.User = User;
 
     $scope.$on('$stateChangeSuccess', () => {
