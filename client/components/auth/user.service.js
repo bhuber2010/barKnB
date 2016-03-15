@@ -18,6 +18,12 @@ function UserResource($resource) {
         controller: 'profile'
       }
     },
+    updateUserSettings: {
+      method: 'PUT',
+      params: {
+        controller: 'settings'
+      }
+    },
     get: {
       method: 'GET',
       params: {

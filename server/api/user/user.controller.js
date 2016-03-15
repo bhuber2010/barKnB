@@ -128,6 +128,36 @@ export function updateProfile(req, res, next) {
 }
 
 /**
+ * Update a users settings
+ */
+export function updateUserSettings(req, res, next) {
+  var userId = req.user._id;
+  var updatedSettings = req.body.settings;
+
+  return User.findById(userId)
+    .populate('settings')
+    .exec()
+    .then(user => {
+      console.log('Old user state: ', user);
+      if (userId) {
+        //update user
+        var settingsKeys = Object.keys(updatedSettings);
+        settingsKeys.forEach((key) => {
+          user.settings._doc[key] = updatedSettings[key];
+        })
+        console.log('Updated user state: ', user);
+        return user.save()
+          .then(() => {
+            res.status(204).end();
+          })
+          .catch(validationError(res));
+      } else {
+        return res.status(403).end();
+      }
+    });
+}
+
+/**
  * Get my info
  */
 export function me(req, res, next) {

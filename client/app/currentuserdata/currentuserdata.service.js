@@ -18,16 +18,29 @@ angular.module('barKnBApp')
       })
     }
 
+    var updateUserSettings = (newData) => {
+      var newDataKeys = Object.keys(newData);
+      newDataKeys.forEach((key) => {
+        if (key !== '_id') {
+          loggedInUser.settings[key] = newData[key];
+        }
+      })
+    }
+
     var getUser = () => {
-      setUser(Auth.getCurrentUser());
-      console.log(loggedInUser);
-      return loggedInUser
-    } ;
+      var data = Auth.getCurrentUser()
+      return data.$promise
+          .then((userData) => {
+            loggedInUser = userData;
+            return userData
+          })
+    };
 
     return {
       setUser: setUser,
       getUserData: getUser,
-      updateUser: updateUser
+      updateUser: updateUser,
+      updateUserSettings: updateUserSettings
     }
 
   });

@@ -12,15 +12,17 @@ class SettingsController {
     this.User = User;
 
     $scope.$on('$stateChangeSuccess', () => {
-      this.userData = this.currentuserdata.getUserData();
-      this.userSettings = {
-        _id: this.userData._id,
-        owner: this.userData.settings.owner,
-        searchradius: this.userData.settings.search_radius,
-        now: this.userData.settings.available_now,
-        calendar: this.userData.settings.calendar_public,
-        accstatus: this.userData.settings.acnt_active
-      };
+      this.currentuserdata.getUserData()
+        .then(userData => {
+          this.userSettings = {
+            _id: userData._id,
+            owner: userData.settings.owner,
+            search_radius: userData.settings.search_radius,
+            now: userData.settings.available_now,
+            calendar_public: userData.settings.calendar_public,
+            acnt_active: userData.settings.acnt_active
+          };
+        })
     });
   }
 
@@ -28,6 +30,24 @@ class SettingsController {
     this.submitted = true;
     if (form.$valid) {
       console.log(form);
+      console.log(this.userSettings);
+      this.User.updateUserSettings({id: this.userSettings._id}, {
+        settings: this.userSettings
+      }, () => {
+        return this.safeCb(callback)(null);
+      }, (err) => {
+        return this.safeCb(callback)(err);
+      }).$promise
+        .then((data) => {
+          console.log(data.settings);
+          this.currentuserdata.updateUserSettings(data.settings);
+          this.message = 'Settings successfully updated.';
+          this.$state.reload();
+        })
+        .catch(() => {
+          this.errors.other = 'Something went wrong!';
+          this.message = '';
+        })
     }
   }
 

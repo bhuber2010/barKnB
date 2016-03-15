@@ -12,17 +12,20 @@ class ProfileController {
     this.User = User;
 
     $scope.$on('$stateChangeSuccess', () => {
-      this.userData = this.currentuserdata.getUserData();
-      this.userInfo = {
-        _id: this.userData._id,
-        name: this.userData.name,
-        email: this.userData.email,
-        address: this.userData.address,
-        telephone: this.userData.telephone,
-        city: this.userData.city,
-        state: this.userData.state,
-        about: this.userData.about
-      };
+      this.currentuserdata.getUserData()
+        .then(userData => {
+          console.log(userData);
+          this.userInfo = {
+            _id: userData._id,
+            name: userData.name,
+            email: userData.email,
+            address: userData.address,
+            telephone: userData.telephone,
+            city: userData.city,
+            state: userData.state,
+            about: userData.about
+          };
+        })
     });
 
   }

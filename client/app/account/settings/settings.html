@@ -31,7 +31,7 @@
 
         <div class="form-group">
           <label>Default Search Radius</label>
-          <input type="text" name="searchradius" class="form-control" ng-model="vm.userSettings.searchradius"
+          <input type="text" name="searchradius" class="form-control" ng-model="vm.userSettings.search_radius"
                  mongoose-error/>
           <p class="help-block" ng-show="settingsform.searchradius.$error.mongoose">
               {{ vm.errors.other }}
@@ -66,7 +66,7 @@
           <input
               name="calendar"
               bs-switch
-              ng-model="vm.userSettings.calendar"
+              ng-model="vm.userSettings.calendar_public"
               type="checkbox"
               switch-label=""
               switch-icon=""
@@ -89,7 +89,7 @@
           <input
               name="accstatus"
               bs-switch
-              ng-model="vm.userSettings.accstatus"
+              ng-model="vm.userSettings.acnt_active"
               type="checkbox"
               switch-label=""
               switch-icon=""
