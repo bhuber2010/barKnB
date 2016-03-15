@@ -35,7 +35,7 @@ class ProfileController {
         user: this.userInfo
       }, () => {
         return this.safeCb(callback)(null);
-      }, () => {
+      }, (err) => {
         return this.safeCb(callback)(err);
       }).$promise
         .then((data) => {

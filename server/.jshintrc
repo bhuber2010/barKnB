@@ -11,5 +11,6 @@
   "undef": true,
   "smarttabs": true,
   "asi": true,
+  "camelcase": false,
   "debug": true
 }
