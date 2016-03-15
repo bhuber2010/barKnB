@@ -45,6 +45,7 @@ function saveUpdates(updates) {
   };
 }
 
+// testing if Lodash messes up the linked documents array ref
 function saveUpdates2(updates) {
   return updates.save()
     .then(updates => {

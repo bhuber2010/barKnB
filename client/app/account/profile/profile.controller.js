@@ -14,6 +14,7 @@ class ProfileController {
       this.currentuserdata.getUserData()
         .then(userData => {
           console.log(userData);
+          this.usersDogs = userData.dogs;
           this.userInfo = {
             _id: userData._id,
             name: userData.name,
