@@ -4,12 +4,14 @@
       <h2>Edit Settings</h2>
     </div>
     <div class="col-sm-12">
-      <form class="form" name="settingsform" ng-submit="vm.updateSettings(form)" novalidate>
+      <form class="form" name="settingsform" ng-submit="vm.updateSettings(settingsform)" novalidate>
 
         <div class="form-group">
           <label>Are you an owner?</label>
-          <bs-switch
-              ng-model="vm.settings.owner"
+          <input
+              name="ownertoggle"
+              bs-switch
+              ng-model="vm.userSettings.owner"
               type="checkbox"
               switch-label=""
               switch-icon=""
@@ -18,9 +20,9 @@
               switch-on-color="primary"
               switch-off-color="info"
               switch-label-width="60px"
-              switch-handle-width="60px"
-              ng-true-value="'{{dash.userMode.care.name}}'"
-              ng-false-value="'{{dash.userMode.need.name}}'"
+              switch-handle-width="80px"
+              ng-true-value="true"
+              ng-false-value="false"
               mongoose-error>
           <p class="help-block" ng-show="settingsform.searchradius.$error.mongoose">
               {{ vm.errors.other }}
@@ -29,7 +31,7 @@
 
         <div class="form-group">
           <label>Default Search Radius</label>
-          <input type="text" name="searchradius" class="form-control" ng-model="vm.settings.searchradius"
+          <input type="text" name="searchradius" class="form-control" ng-model="vm.userSettings.searchradius"
                  mongoose-error/>
           <p class="help-block" ng-show="settingsform.searchradius.$error.mongoose">
               {{ vm.errors.other }}
@@ -38,8 +40,22 @@
 
         <div class="form-group">
           <label>Available now</label>
-          <input type="text" name="now" class="form-control" ng-model="vm.settings.now"
-                 mongoose-error/>
+          <input
+              name="now"
+              bs-switch
+              ng-model="vm.userSettings.now"
+              type="checkbox"
+              switch-label=""
+              switch-icon=""
+              switch-on-text="On"
+              switch-off-text="Off"
+              switch-on-color="primary"
+              switch-off-color="info"
+              switch-label-width="40px"
+              switch-handle-width="40px"
+              ng-true-value="true"
+              ng-false-value="false"
+              mongoose-error>
           <p class="help-block" ng-show="settingsform.now.$error.mongoose">
               {{ vm.errors.other }}
           </p>
@@ -47,8 +63,22 @@
 
         <div class="form-group">
           <label>Calendar publicly viewable</label>
-          <input type="text" name="calendar" class="form-control" ng-model="vm.settings.calendar"
-                 mongoose-error/>
+          <input
+              name="calendar"
+              bs-switch
+              ng-model="vm.userSettings.calendar"
+              type="checkbox"
+              switch-label=""
+              switch-icon=""
+              switch-on-text="On"
+              switch-off-text="Off"
+              switch-on-color="primary"
+              switch-off-color="info"
+              switch-label-width="40px"
+              switch-handle-width="40px"
+              ng-true-value="true"
+              ng-false-value="false"
+              mongoose-error>
           <p class="help-block" ng-show="settingsform.calendar.$error.mongoose">
               {{ vm.errors.other }}
           </p>
@@ -56,8 +86,22 @@
 
         <div class="form-group">
           <label>Account active</label>
-          <input type="text" name="accstatus" class="form-control" ng-model="vm.settings.accstatus"
-                 mongoose-error/>
+          <input
+              name="accstatus"
+              bs-switch
+              ng-model="vm.userSettings.accstatus"
+              type="checkbox"
+              switch-label=""
+              switch-icon=""
+              switch-on-text="On"
+              switch-off-text="Off"
+              switch-on-color="primary"
+              switch-off-color="info"
+              switch-label-width="40px"
+              switch-handle-width="40px"
+              ng-true-value="true"
+              ng-false-value="false"
+              mongoose-error>
           <p class="help-block" ng-show="settingsform.accstatus.$error.mongoose">
               {{ vm.errors.other }}
           </p>

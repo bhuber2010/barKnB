@@ -103,7 +103,6 @@ export function changePassword(req, res, next) {
  * Update a users profile
  */
 export function updateProfile(req, res, next) {
-  console.log(req.user._id);
   var userId = req.user._id;
   var updatedUser = req.body.user;
 

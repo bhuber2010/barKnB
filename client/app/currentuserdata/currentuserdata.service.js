@@ -20,6 +20,7 @@ angular.module('barKnBApp')
 
     var getUser = () => {
       setUser(Auth.getCurrentUser());
+      console.log(loggedInUser);
       return loggedInUser
     } ;
 
