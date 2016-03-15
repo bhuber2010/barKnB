@@ -9,11 +9,11 @@
   </div>
   <div class="row">
     <div class="col-sm-12">
-      <form class="form" name="profileform" ng-submit="nd.submitDog(form)" novalidate>
+      <form class="form" name="profileform" ng-submit="profile.updateProfile(profileform)" novalidate>
 
         <div class="form-group">
           <label>Name</label>
-          <input type="text" name="name" class="form-control" ng-model="profile.user.name"
+          <input type="text" name="name" class="form-control" ng-model="profile.userInfo.name"
                  mongoose-error/>
           <p class="help-block" ng-show="profileform.name.$error.mongoose">
               {{ profile.errors.other }}
@@ -22,7 +22,7 @@
 
         <div class="form-group">
           <label>E-mail</label>
-          <input type="text" name="email" class="form-control" ng-model="profile.user.email"
+          <input type="text" name="email" class="form-control" ng-model="profile.userInfo.email"
                  mongoose-error/>
           <p class="help-block" ng-show="profileform.email.$error.mongoose">
               {{ profile.errors.other }}
@@ -31,7 +31,7 @@
 
         <div class="form-group">
           <label>Phone Number</label>
-          <input type="text" name="telephone" class="form-control" ng-model="profile.user.telephone"
+          <input type="text" name="telephone" class="form-control" ng-model="profile.userInfo.telephone"
                  mongoose-error/>
           <p class="help-block" ng-show="profileform.telephone.$error.mongoose">
               {{ profile.errors.other }}
@@ -40,7 +40,7 @@
 
         <div class="form-group">
           <label>Address</label>
-          <input type="text" name="address" class="form-control" ng-model="profile.user.address"
+          <input type="text" name="address" class="form-control" ng-model="profile.userInfo.address"
                  mongoose-error/>
           <p class="help-block" ng-show="profileform.address.$error.mongoose">
               {{ profile.errors.other }}
@@ -49,7 +49,7 @@
 
         <div class="form-group">
           <label>City</label>
-          <input type="text" name="city" class="form-control" ng-model="profile.user.city"
+          <input type="text" name="city" class="form-control" ng-model="profile.userInfo.city"
                  mongoose-error/>
           <p class="help-block" ng-show="profileform.city.$error.mongoose">
               {{ profile.errors.other }}
@@ -58,7 +58,7 @@
 
         <div class="form-group">
           <label>State</label>
-          <input type="text" name="state" class="form-control" ng-model="profile.user.state"
+          <input type="text" name="state" class="form-control" ng-model="profile.userInfo.state"
                  mongoose-error/>
           <p class="help-block" ng-show="profileform.state.$error.mongoose">
               {{ profile.errors.other }}
@@ -67,7 +67,7 @@
 
         <div class="form-group">
           <label>A little about yourself</label>
-          <input type="text" name="about" class="form-control" ng-model="profile.user.about"
+          <input type="text" name="about" class="form-control" ng-model="profile.userInfo.about"
                  mongoose-error/>
           <p class="help-block" ng-show="profileform.about.$error.mongoose">
               {{ profile.errors.other }}

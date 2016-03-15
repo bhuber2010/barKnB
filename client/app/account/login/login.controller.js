@@ -21,9 +21,7 @@ class LoginController {
         password: this.user.password
       })
       .then(() => {
-
-        console.log(this.Auth.getCurrentUser());
-
+        this.currentuserdata.setUser(this.Auth.getCurrentUser());
         this.$state.go('dashboard');
       })
       .catch(err => {

@@ -100,6 +100,35 @@ export function changePassword(req, res, next) {
 }
 
 /**
+ * Update a users profile
+ */
+export function updateProfile(req, res, next) {
+  console.log(req.user._id);
+  var userId = req.user._id;
+  var updatedUser = req.body.user;
+
+  return User.findById(userId).exec()
+    .then(user => {
+      console.log('Old user state: ', user);
+      if (userId) {
+        //update user
+        var userKeys = Object.keys(updatedUser);
+        userKeys.forEach((key) => {
+          user[key] = updatedUser[key];
+        })
+        console.log('Updated user state: ', user);
+        return user.save()
+          .then(() => {
+            res.status(204).end();
+          })
+          .catch(validationError(res));
+      } else {
+        return res.status(403).end();
+      }
+    });
+}
+
+/**
  * Get my info
  */
 export function me(req, res, next) {
