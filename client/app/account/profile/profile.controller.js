@@ -23,7 +23,6 @@ class ProfileController {
         state: this.userData.state,
         about: this.userData.about
       };
-      console.log(this.userInfo);
     });
 
   }
@@ -31,7 +30,6 @@ class ProfileController {
   updateProfile(form, callback) {
     this.submitted = true;
     console.log(form);
-    console.log(this.userInfo);
     if (form.$valid) {
       this.User.updateProfile({ id: this.userInfo._id}, {
         user: this.userInfo

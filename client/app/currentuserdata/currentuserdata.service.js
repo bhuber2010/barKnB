@@ -1,13 +1,12 @@
 'use strict';
 
 angular.module('barKnBApp')
-  .service('currentuserdata', function () {
+  .service('currentuserdata', function (Auth, User) {
 
     var loggedInUser = {};
 
     var setUser = (user) => {
       loggedInUser = user;
-      console.log(loggedInUser);
     }
 
     var updateUser = (newData) => {
@@ -19,7 +18,10 @@ angular.module('barKnBApp')
       })
     }
 
-    var getUser = () => loggedInUser;
+    var getUser = () => {
+      setUser(Auth.getCurrentUser());
+      return loggedInUser
+    } ;
 
     return {
       setUser: setUser,
