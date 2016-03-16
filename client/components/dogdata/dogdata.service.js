@@ -6,6 +6,14 @@ function DogResource($resource) {
   return $resource('/api/dogs/:id/:controller', {
     id: '@_id'
   }, {
+    getAllDogs: {
+      method: 'GET',
+      isArray: true,
+      params: {
+        controller: null,
+        id: null
+      }
+    },
     getOwnDogs: {
       method: 'GET',
       isArray: true,

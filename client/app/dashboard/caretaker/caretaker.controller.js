@@ -2,10 +2,17 @@
 (function(){
 
 class CaretakerComponent {
-  constructor(dashdata, $stateParams) {
+  constructor(dashdata, DogData, $stateParams) {
     this.dashdata = dashdata;
+    this.DogData = DogData;
     console.log(dashdata.userMode.selectedMode, $stateParams.activity);
     console.log(dashdata.activities[$stateParams.activity]);
+
+    this.DogData.getAllDogs().$promise
+      .then((doglist) => {
+        console.log(doglist);
+        this.dogs = doglist;
+      })
   }
 }
 

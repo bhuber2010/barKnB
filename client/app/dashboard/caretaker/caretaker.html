@@ -1,1 +1,19 @@
-<div>This is the caretaker view.</div>
+<div class="container flex-page">
+  <div class="page-header">
+    <h1>Available Dogs</h1>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 col-md-4" ng-repeat="dog in ct.dogs">
+      <div class="thumbnail">
+        <img src="{{dog.photo}}" alt="{{dog.name}}">
+        <div class="caption">
+          <h3>{{dog.name}}<br><small>{{dog.breed}}</small></h3>
+          <p>{{dog.bio}}</p>
+          <p>
+            <a ui-sref="profile" class="btn btn-primary" role="button">View Schedule</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
