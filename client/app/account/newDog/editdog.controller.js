@@ -4,6 +4,7 @@ class EditDogController {
   constructor($scope, $state, $stateParams, currentuserdata, DogData) {
     this.errors = {};
     this.submitted = false;
+    this.edit = false;
 
     this.currentuserdata = currentuserdata;
     this.$state = $state;
@@ -11,6 +12,7 @@ class EditDogController {
     this.DogData = DogData;
 
     $scope.$on('$stateChangeSuccess', () => {
+      this.edit = true;
       this.currentuserdata.getUserData()
         .then(userData => {
           console.log(userData);

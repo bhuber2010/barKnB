@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <h2>Add your pooch!</h2>
+      <h2 ng-hide="nd.edit">Add your pooch!</h2>
+      <h2 ng-show="nd.edit">Edit your pooch!</h2>
     </div>
     <div class="col-sm-12">
       <form class="form" name="newdog" ng-submit="nd.submitDog(newdog)" novalidate>
@@ -60,7 +61,8 @@
           </p>
         </div>
 
-        <button class="btn btn-lg btn-primary" type="submit">Add dog</button>
+        <button ng-hide="nd.edit" class="btn btn-lg btn-primary" type="submit">Add dog</button>
+        <button ng-show="nd.edit" class="btn btn-lg btn-primary" type="submit">Update Dog</button>
       </form>
     </div>
   </div>
