@@ -1,7 +1,7 @@
 'use strict';
 
 class ProfileController {
-  constructor($scope, $state, currentuserdata, User, Util) {
+  constructor($scope, $state, currentuserdata, User, DogData, Util) {
     this.errors = {};
     this.submitted = false;
 
@@ -9,12 +9,13 @@ class ProfileController {
     this.safeCb = Util.safeCb;
     this.$state = $state;
     this.User = User;
+    this.DogData = DogData;
 
     $scope.$on('$stateChangeSuccess', () => {
       this.currentuserdata.getUserData()
         .then(userData => {
           console.log(userData);
-          this.usersDogs = userData.dogs;
+          // this.usersDogs = userData.dogs;
           this.userInfo = {
             _id: userData._id,
             name: userData.name,
@@ -25,7 +26,16 @@ class ProfileController {
             state: userData.state,
             about: userData.about
           };
+          return userData._id
         })
+        .then((userID) => {
+          DogData.getOwnDogs({ id: userID}).$promise
+          .then((dogs) => {
+            console.log(dogs);
+            this.usersDogs = dogs;
+          })
+        })
+
     });
 
   }

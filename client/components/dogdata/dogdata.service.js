@@ -1,23 +1,28 @@
 'use strict';
 
-
-
 (function() {
 
-function DogResource(Auth, $resource) {
-  return dogsResource = $resource('/api/dogs/:id/:controller', {
+function DogResource($resource) {
+  return $resource('/api/dogs/:id/:controller', {
     id: '@_id'
   }, {
+    getOwnDogs: {
+      method: 'GET',
+      isArray: true,
+      params: {
+        controller: 'getOwnDogs'
+      }
+    },
     updateDog: {
-      method:'PUT',
+      method: 'PUT',
       params: {
         controller: 'updateDog'
       }
-    },
+    }
   });
 }
 
 angular.module('barKnBApp')
-  .factory('dogdata', DogResource);
+  .factory('DogData', DogResource);
 
 })();

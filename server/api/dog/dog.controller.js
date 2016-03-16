@@ -66,6 +66,13 @@ export function index(req, res) {
     .catch(handleError(res));
 }
 
+// Gets a list of current users Dogs
+export function indexUser(req, res) {
+  return Dog.find({ owner_user: req.params.id }).exec()
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
 // Gets a single Dog from the DB
 export function show(req, res) {
   return Dog.findById(req.params.id).exec()

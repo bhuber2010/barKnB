@@ -1,7 +1,7 @@
 'use strict';
 
 class NewDogController {
-  constructor($scope, $state, currentuserdata, dogdata, User, Util) {
+  constructor($scope, $state, currentuserdata, DogData, User, Util) {
     this.errors = {};
     this.submitted = false;
 
@@ -9,7 +9,7 @@ class NewDogController {
     this.safeCb = Util.safeCb;
     this.$state = $state;
     this.User = User;
-    this.dogdata = dogdata;
+    this.DogData = DogData;
 
     $scope.$on('$stateChangeSuccess', () => {
       this.currentuserdata.getUserData()
@@ -24,7 +24,7 @@ class NewDogController {
   submitDog(form) {
     console.log(form);
     this.submitted = true;
-    var newDog = new this.dogdata.dogsResource();
+    var newDog = new this.DogData();
     console.log(this.userData);
     if (form.$valid) {
       newDog.owner_user = this.userData._id;
@@ -41,7 +41,7 @@ class NewDogController {
             .then((data) => {
               console.log(data);
               this.message = 'Profile successfully updated.';
-              this.$state.reload();
+              this.$state.go('profile');
             })
             .catch(() => {
               this.errors.other = 'Something went wrong!';
