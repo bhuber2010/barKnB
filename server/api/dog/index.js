@@ -9,7 +9,7 @@ router.get('/', controller.index);
 router.get('/:id', controller.show);
 router.get('/:id/getOwnDogs', controller.indexUser);
 router.post('/', controller.create);
-router.put('/:id', controller.update);
+router.put('/:id/updateDog', controller.update);
 router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);
 

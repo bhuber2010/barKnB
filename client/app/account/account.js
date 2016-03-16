@@ -56,7 +56,7 @@ angular.module('barKnBApp')
         authenticate: true
       })
       .state('editdog', {
-        url: '/editdog',
+        url: '/editdog/:dogID',
         templateUrl: 'app/account/newDog/newdog.html',
         controller: 'EditDogController',
         controllerAs: 'nd',
