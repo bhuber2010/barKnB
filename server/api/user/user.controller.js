@@ -1,6 +1,7 @@
 'use strict';
 
 import User from './user.model';
+import {Settings} from './user.model';
 import passport from 'passport';
 import _ from 'lodash';
 import config from '../../config/environment';
@@ -68,9 +69,11 @@ export function index(req, res) {
  * Creates a new user
  */
 export function create(req, res, next) {
+  var userSettings = new Settings();
   var newUser = new User(req.body);
   newUser.provider = 'local';
   newUser.role = 'user';
+  newUser.settings = userSettings;
   newUser.save()
     .then(function(user) {
       var token = jwt.sign({ _id: user._id }, config.secrets.session, {

@@ -35,11 +35,26 @@ var UserSchema = new Schema({
 });
 
 const SettingSchema = new mongoose.Schema({
-  owner: Boolean,
-  search_radius: Number,
-  available_now: Boolean,
-  acnt_active: Boolean,
-  calendar_public: Boolean
+  owner: {
+    type: Boolean,
+    default: true
+  },
+  search_radius: {
+    type: Number,
+    default: 10
+  },
+  available_now: {
+    type: Boolean,
+    default: false
+  },
+  acnt_active: {
+    type: Boolean,
+    default: true
+  },
+  calendar_public: {
+    type: Boolean,
+    default: true
+  }
 });
 
 export const Settings = mongoose.model('Settings', SettingSchema);
