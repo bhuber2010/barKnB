@@ -47,6 +47,16 @@ class EditDogController {
       // DogEdits.shot = form.shot.$modelValue;
       DogEdits.vet_contact = form.vet_contact.$modelValue;
       this.DogData.updateDog({ id: this.$stateParams.dogID}, DogEdits)
+        .$promise
+        .then((data) => {
+          console.log(data);
+          this.message = 'Profile successfully updated.';
+          this.$state.go('profile');
+        })
+        .catch(() => {
+          this.errors.other = 'Something went wrong!';
+          this.message = '';
+        })
     }
   }
 }
