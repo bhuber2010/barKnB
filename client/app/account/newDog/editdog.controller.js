@@ -46,7 +46,7 @@ class EditDogController {
       DogEdits.bio = form.bio.$modelValue;
       // DogEdits.shot = form.shot.$modelValue;
       DogEdits.vet_contact = form.vet_contact.$modelValue;
-      DogData.updateDog({ id: this.$stateParams.dogID}, DogEdits)
+      this.DogData.updateDog({ id: this.$stateParams.dogID}, DogEdits)
     }
   }
 }

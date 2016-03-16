@@ -28,15 +28,27 @@ body {
 body {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     font-family: 'Questrial','Helvetica Neue',Arial,sans-serif;
     background-color: #282828;
     color: #d3d3d3;
 
     #app-view {
-      margin-top: 60px;
+      padding-top: 60px;
       min-height: calc(100% - 60px);
       min-width: 100%;
+      overflow: auto;
+
+      .flex-page {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
     }
+}
+
+navbar {
+  min-height: 60px;
 }
 
 hr {
