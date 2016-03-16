@@ -10,7 +10,7 @@
           <h3>{{dog.name}}<br><small>{{dog.breed}}</small></h3>
           <p>{{dog.bio}}</p>
           <p>
-            <a ui-sref="profile" class="btn btn-primary" role="button">View Schedule</a>
+            <a ui-sref="schedule({id: dog._id})" class="btn btn-primary" role="button">View Schedule</a>
           </p>
         </div>
       </div>

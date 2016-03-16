@@ -1,0 +1,16 @@
+div.dog-schedule {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  .dog-schedule-img-holder {
+    padding-right: 20px;
+
+    .dog-schedule-img {
+      max-width: 200px;
+      height: auto;
+    }
+  }
+
+}
