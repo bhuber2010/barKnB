@@ -22,11 +22,56 @@ class ScheduleComponent {
     this.widget.init({
       name: 'Brian',
       email: 'bhuber@alumni.colostate.edu',
-      apiToken: 'S2oK9czO8wdgQjGFvQxgufWaJgs3rkSL',
+      apiToken: 'q1myahTdpaEsDlE59r8Jq5YL7Ze84OWc',
+      // apiToken: 'kD3hE2IrcgV7Qal92k8Y2392dqU65Xb9',
       calendar: '7e633362-716a-4f23-bb35-9fcda204b1a4',
       avatar: 'https://lh6.googleusercontent.com/-ePoHAHPfVgE/AAAAAAAAAAI/AAAAAAAAF-Q/beBK7juwGZ0/photo.jpg',
+      fullCalendar: {
+        defaultView: 'basicWeek'
+      },
+      timekitConfig: {
+        app: 'barknb'
+      },
       timekitFindTime: {
         ignore_all_day_events: true
+      },
+      bookingFields: {
+        name: {
+          placeholder: 'Full name',
+          prefilled: false,
+          locked: false
+        },
+        email: {
+          placeholder: 'E-mail',
+          prefilled: false,
+          locked: false
+        },
+        phone: {
+          enabled: true,
+          placeholder: 'Phone number',
+          prefilled: false,
+          required: false,
+          locked: false
+        },
+        location: {
+          enabled: true,
+          placeholder: 'Location',
+          prefilled: false,
+          required: false,
+          locked: false
+        },
+        comment: {
+          enabled: true,
+          placeholder: 'Comment',
+          prefilled: false,
+          required: false,
+          locked: false
+        }
+      },
+      callbacks: {
+        createBookingSuccessful: (data) => {
+          console.log('createBookingSuccessful', data)
+        }
       }
     })
 
