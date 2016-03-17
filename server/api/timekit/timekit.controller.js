@@ -28,28 +28,28 @@ function handleError(res, statusCode) {
 export function saveAccount(req, res) {
   return User.findOne({ email: req.query.email }).exec()
     .then((foundUser) => {
-      // var tkSync = unirest.get('https://api.timekit.io/v2/accounts/sync');
-      // tkSync.headers({
-      //   'Accept': 'application/json',
-      //   'Timekit-App': 'barknb',
-      //   'accept-encoding': 'gzip'
-      // })
-      // tkSync.auth(req.query.email, req.query.token, true);
-      // tkSync.end((response) => {
-      //   console.log(response);
-      // });
-      var tkCal = unirest.get('https://api.timekit.io/v2/calendars');
-      tkCal.headers({
+      var tkSync = unirest.get('https://api.timekit.io/v2/accounts/sync');
+      tkSync.headers({
         'Accept': 'application/json',
         'Timekit-App': 'barknb',
         'accept-encoding': 'gzip'
       })
-      tkCal.auth(req.query.email, req.query.token, true);
-      tkCal.end((response) => {
-        foundUser.timekittoken = req.query.token;
-        foundUser.timekitcal = response.body.data[0].id;
-        foundUser.save();
-        console.log(foundUser);
+      tkSync.auth(req.query.email, req.query.token, true);
+      tkSync.end((res) => {
+        console.log(res);
+        var tkCal = unirest.get('https://api.timekit.io/v2/calendars');
+        tkCal.headers({
+          'Accept': 'application/json',
+          'Timekit-App': 'barknb',
+          'accept-encoding': 'gzip'
+        })
+        tkCal.auth(req.query.email, req.query.token, true);
+        tkCal.end((response) => {
+          foundUser.timekittoken = req.query.token;
+          foundUser.timekitcal = response.body.data[0].id;
+          foundUser.save();
+          console.log(foundUser);
+        });
       });
 
       return res.send("All good");

@@ -76,7 +76,7 @@ export function indexUser(req, res) {
 
 // Gets a single Dog from the DB
 export function show(req, res) {
-  return Dog.findById(req.params.id).exec()
+  return Dog.findById(req.params.id).populate('owner_user').exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));

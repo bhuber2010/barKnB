@@ -4,6 +4,7 @@ import User from './user.model';
 import {Settings} from './user.model';
 import passport from 'passport';
 import _ from 'lodash';
+import unirest from 'unirest';
 import config from '../../config/environment';
 import jwt from 'jsonwebtoken';
 
@@ -219,6 +220,18 @@ export function me(req, res, next) {
       if (!user) {
         return res.status(401).end();
       }
+
+      if (user.timekittoken && user.timekitcal) {
+        var tkSync = unirest.get('https://api.timekit.io/v2/accounts/sync');
+        tkSync.headers({
+          'Accept': 'application/json',
+          'Timekit-App': 'barknb',
+          'accept-encoding': 'gzip'
+        })
+        tkSync.auth(user.email, user.timekittoken, true);
+        tkSync.end();
+      }
+
       res.json(user);
     })
     .catch(err => next(err));

@@ -1,7 +1,7 @@
 'use strict';
 
 class ProfileController {
-  constructor($scope, $state, $window, currentuserdata, User, DogData, Timekit, Util) {
+  constructor($scope, $state, $window, currentuserdata, User, DogData, Timekit, Util, serverApi) {
     this.errors = {};
     this.submitted = false;
 
@@ -12,12 +12,12 @@ class ProfileController {
     this.User = User;
     this.DogData = DogData;
     this.Timekit = Timekit;
+    this.serverApi = serverApi;
 
     $scope.$on('$stateChangeSuccess', () => {
       this.currentuserdata.getUserData()
         .then(userData => {
           console.log(userData);
-          // this.usersDogs = userData.dogs;
           this.userInfo = {
             _id: userData._id,
             name: userData.name,
@@ -68,7 +68,7 @@ class ProfileController {
 
   connectTimekit() {
     // this.Timekit.createAccount();
-    this.$window.open('https://api.timekit.io/v2/accounts/google/signup?Timekit-App=barknb&callback=http://localhost:9000/api/timekit/callback', 'Timekit Auth', 'height=600,width=400');
+    this.$window.open(`https://api.timekit.io/v2/accounts/google/signup?Timekit-App=barknb&callback=${this.serverApi}/api/timekit/callback`, 'Timekit Auth', 'height=600,width=400');
     // console.log(this.$window);
   }
 

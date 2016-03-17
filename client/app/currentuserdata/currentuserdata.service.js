@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('barKnBApp')
-  .service('currentuserdata', function (Auth, User) {
+  .service('currentuserdata', function (Auth) {
 
     var loggedInUser = {};
 
