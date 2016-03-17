@@ -1,15 +1,17 @@
 'use strict';
 
 class ProfileController {
-  constructor($scope, $state, currentuserdata, User, DogData, Util) {
+  constructor($scope, $state, $window, currentuserdata, User, DogData, Timekit, Util) {
     this.errors = {};
     this.submitted = false;
 
     this.currentuserdata = currentuserdata;
     this.safeCb = Util.safeCb;
     this.$state = $state;
+    this.$window = $window;
     this.User = User;
     this.DogData = DogData;
+    this.Timekit = Timekit;
 
     $scope.$on('$stateChangeSuccess', () => {
       this.currentuserdata.getUserData()
@@ -63,6 +65,13 @@ class ProfileController {
         })
     }
   }
+
+  connectTimekit() {
+    // this.Timekit.createAccount();
+    this.$window.open('https://api.timekit.io/v2/accounts/google/signup?Timekit-App=barknb&callback=http://localhost:9000/api/timekit/callback', 'Timekit Auth', 'height=600,width=400');
+    // console.log(this.$window);
+  }
+
 }
 
 angular.module('barKnBApp')

@@ -1,10 +1,14 @@
 <div class="container flex-page">
   <div class="flex-row">
       <h1>Profile</h1>
+      <a href="https://api.timekit.io/v2/accounts/google/signup?Timekit-App=barknb&callback=http://localhost:9000/api/timekit/callback">
+        <button class="btn btn-danger" type="button" name="bookingjs">Connect Bookings Feature</button>
+      </a>
       <div class="btn-group">
         <button class="btn btn-success" type="button" name="adddog" ui-sref="newdog">Add Dog</button>
         <button class="btn btn-info" type="button" name="settings" ui-sref="settings">Settings</button>
         <button class="btn btn-warning" type="button" name="changepwd" ui-sref="password">Change Password</button>
+        <button class="btn btn-danger" type="button" name="bookingjs" ng-click="profile.connectTimekit()">Connect Bookings Feature</button>
       </div>
   </div>
   <div class="row">

@@ -22,6 +22,8 @@ var UserSchema = new Schema({
   about: String,
   telephone: String,
   backgroundCheck: Boolean,
+  timekittoken: String,
+  timekitcal: String,
   settings: { type: Schema.Types.ObjectId, ref: 'Settings' },
   role: {
     type: String,
