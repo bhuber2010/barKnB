@@ -2,7 +2,8 @@
 (function(){
 
 class ScheduleComponent {
-  constructor($stateParams, DogData) {
+  constructor($stateParams, $window, DogData) {
+    this.TimekitBooking = $window.TimekitBooking;
     this.DogData = DogData;
 
     this.DogData.get({ id: $stateParams.id}).$promise
@@ -18,7 +19,7 @@ class ScheduleComponent {
         };
       })
 
-    this.widget = new TimekitBooking();
+    this.widget = new this.TimekitBooking();
     this.widget.init({
       name: 'Brian',
       email: 'bhuber@alumni.colostate.edu',
