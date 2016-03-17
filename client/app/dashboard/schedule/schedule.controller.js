@@ -23,9 +23,6 @@ class ScheduleComponent {
           email: dog.owner_user.email,
           apiToken: dog.owner_user.timekittoken,
           calendar: dog.owner_user.timekitcal,
-          // apiToken: 'q1myahTdpaEsDlE59r8Jq5YL7Ze84OWc',
-          // apiToken: 'kD3hE2IrcgV7Qal92k8Y2392dqU65Xb9',
-          // calendar: '7e633362-716a-4f23-bb35-9fcda204b1a4',
           avatar: dog.owner_user.google.image.url,
           fullCalendar: {
             defaultView: 'basicWeek'
