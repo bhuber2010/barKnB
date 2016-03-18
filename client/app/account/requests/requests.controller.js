@@ -22,7 +22,7 @@ class RequestController {
         console.log(requests);
         this.requests = requests;
         if (requests.length === 0) {
-          this.noRequests = "You currently have no reuqests";
+          this.noRequests = 'You currently have no reuqests';
         }
       })
   }

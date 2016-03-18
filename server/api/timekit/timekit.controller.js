@@ -36,7 +36,7 @@ export function takeAction(req, res) {
       tkAction.auth(foundUser.email, foundUser.timekittoken, true);
       tkAction.end(confirmation => {
         console.log(confirmation);
-        return res.json({});
+        return res.json(confirmation);
       })
     })
 }
@@ -50,16 +50,39 @@ export function getRequests(req, res) {
         'Accept': 'application/json',
         'Timekit-App': 'barknb',
         'accept-encoding': 'gzip',
-      })
+      });
       tkRequests.auth(foundUser.email, foundUser.timekittoken, true);
       tkRequests.end(requests => {
         requests = requests.body.data;
         console.log(requests);
-        _.remove(requests, r => r.completed === true);
-        _.remove(requests, r => r.graph === 'instant');
-        _.remove(requests, r => r.possible_actions[0] === 'create');
+        _.remove(requests, r => {
+          if (r.completed === true || r.graph === 'instant' || r.possible_actions[0] === 'create') {
+            return true;
+          } else {
+            return false;
+          }
+        });
         console.log(requests);
-        return res.json(requests);
+        Promise.all(
+          requests.map((request, i) => {
+            return new Promise((resolve, reject) => {
+              var tkReqDetails = unirest.get(`https://api.timekit.io/v2/bookings/${request.id}`)
+              tkReqDetails.headers({
+                'Accept': 'application/json',
+                'Timekit-App': 'barknb',
+                'accept-encoding': 'gzip',
+              });
+              tkReqDetails.auth(foundUser.email, foundUser.timekittoken, true);
+              tkReqDetails.end(data => {
+                resolve(data.body.data);
+              })
+            })
+          })
+        ).then((AllReqDetails) => {
+          console.log(AllReqDetails);
+          res.json(requests);
+        })
+
       })
     })
 }
