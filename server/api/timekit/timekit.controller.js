@@ -28,30 +28,30 @@ function handleError(res, statusCode) {
 export function saveAccount(req, res) {
   return User.findOne({ email: req.query.email }).exec()
     .then((foundUser) => {
-      var tkSync = unirest.get('https://api.timekit.io/v2/accounts/sync');
-      tkSync.headers({
-        'Accept': 'application/json',
-        'Timekit-App': 'barknb',
-        'accept-encoding': 'gzip'
-      })
-      tkSync.auth(req.query.email, req.query.token, true);
-      tkSync.end((res) => {
-        console.log(res);
-        var tkCal = unirest.get('https://api.timekit.io/v2/calendars');
-        tkCal.headers({
+      if (!foundUser.timekitcal) {
+        var tkSync = unirest.post('https://api.timekit.io/v2/calendars');
+        tkSync.headers({
           'Accept': 'application/json',
           'Timekit-App': 'barknb',
-          'accept-encoding': 'gzip'
+          'accept-encoding': 'gzip',
+          'content-type': 'application/json'
         })
-        tkCal.auth(req.query.email, req.query.token, true);
-        tkCal.end((response) => {
+        tkSync.send({
+          name: 'barknb',
+          description: 'Doggy schedule',
+          foregroundcolor: '#1d1d1d',
+          backgroundcolor: '#cd74e6'
+        })
+        tkSync.auth(req.query.email, req.query.token, true);
+        tkSync.end((calendar) => {
+          console.log('calendar: ', calendar);
           foundUser.timekittoken = req.query.token;
-          foundUser.timekitcal = response.body.data[0].id;
+          foundUser.timekitcal = calendar.body.data.id;
           foundUser.save();
           console.log(foundUser);
         });
-      });
-
+      }
+      
       return res.send("All good... you can close this window.");
     })
 }
