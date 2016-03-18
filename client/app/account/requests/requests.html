@@ -1,0 +1,22 @@
+<div class="container flex-page">
+  <div class="page-header">
+    <h1>Requests for my doggies</h1>
+  </div>
+  <div class="">
+    <div class="panel panel-info" ng-repeat="request in re.requests">
+      <div class="panel-heading">
+        <h4>{{request.customers[0].name}}</h4>
+      </div>
+      <div class="flex-request-row">
+        <ul>
+          <li>{{request.customers[0].email}}</li>
+          <li>{{request.customers[0].phone}}</li>
+        </ul>
+        <div class="btn-group">
+          <button class="btn" type="button" name="{{action}}" ng-click="" ng-repeat="action in request.possible_actions" ng-class="re.actionType(action)">{{action}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

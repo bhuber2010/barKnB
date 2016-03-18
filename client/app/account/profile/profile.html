@@ -3,7 +3,8 @@
       <h1>Profile</h1>
       <div class="btn-group">
         <button class="btn btn-success" type="button" name="adddog" ui-sref="newdog">Add Dog</button>
-        <button class="btn btn-info" type="button" name="settings" ui-sref="settings">Settings</button>
+        <button class="btn btn-info" type="button" name="requests" ui-sref="requests({id: profile.userInfo._id})">Requests</button>
+        <button class="btn btn-default" type="button" name="settings" ui-sref="settings">Settings</button>
         <button class="btn btn-warning" type="button" name="changepwd" ui-sref="password">Change Password</button>
         <button class="btn btn-danger" type="button" name="bookingjs" ng-click="profile.connectTimekit()">Connect Bookings Feature</button>
       </div>

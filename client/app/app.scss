@@ -151,6 +151,7 @@ footer {
 // Component styles are injected through grunt
 // injector
 @import 'account/account.scss';
+@import 'account/requests/requests.scss';
 @import 'admin/admin.scss';
 @import 'dashboard/caretaker/caretaker.scss';
 @import 'dashboard/dashSearch/dashSearch.scss';

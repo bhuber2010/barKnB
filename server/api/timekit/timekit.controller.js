@@ -22,6 +22,27 @@ function handleError(res, statusCode) {
   };
 }
 
+// Get requests for a user
+export function getRequests(req, res) {
+  return User.findOne({ _id: req.params.id }).exec()
+    .then(foundUser => {
+      var tkRequests = unirest.get('https://api.timekit.io/v2/bookings');
+      tkRequests.headers({
+        'Accept': 'application/json',
+        'Timekit-App': 'barknb',
+        'accept-encoding': 'gzip',
+      })
+      tkRequests.auth(foundUser.email, foundUser.timekittoken, true);
+      tkRequests.end(requests => {
+        var requests = requests.body.data;
+        console.log(requests);
+        _.remove(requests, r => r.completed === true);
+        _.remove(requests, r => r.graph === 'instant')
+        console.log(requests);
+        return res.json(requests);
+      })
+    })
+}
 
 
 // Save timekit account details to User
@@ -51,7 +72,7 @@ export function saveAccount(req, res) {
           console.log(foundUser);
         });
       }
-      
+
       return res.send("All good... you can close this window.");
     })
 }

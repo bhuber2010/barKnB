@@ -62,6 +62,13 @@ angular.module('barKnBApp')
         controllerAs: 'nd',
         authenticate: true
       })
+      .state('requests', {
+        url: '/requests/:id',
+        templateUrl: 'app/account/requests/requests.html',
+        controller: 'RequestController',
+        controllerAs: 're',
+        authenticate: true
+      })
   })
   .run(function($rootScope) {
     $rootScope.$on('$stateChangeStart', function(event, next, nextParams, current) {
