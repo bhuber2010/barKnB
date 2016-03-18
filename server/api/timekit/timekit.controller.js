@@ -63,26 +63,7 @@ export function getRequests(req, res) {
           }
         });
         console.log(requests);
-        Promise.all(
-          requests.map((request, i) => {
-            return new Promise((resolve, reject) => {
-              var tkReqDetails = unirest.get(`https://api.timekit.io/v2/bookings/${request.id}`)
-              tkReqDetails.headers({
-                'Accept': 'application/json',
-                'Timekit-App': 'barknb',
-                'accept-encoding': 'gzip',
-              });
-              tkReqDetails.auth(foundUser.email, foundUser.timekittoken, true);
-              tkReqDetails.end(data => {
-                resolve(data.body.data);
-              })
-            })
-          })
-        ).then((AllReqDetails) => {
-          console.log(AllReqDetails);
-          res.json(requests);
-        })
-
+        res.json(requests);
       })
     })
 }
