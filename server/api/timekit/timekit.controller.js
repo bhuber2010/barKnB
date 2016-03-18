@@ -52,7 +52,7 @@ export function saveAccount(req, res) {
         });
       });
 
-      return res.send("All good");
+      return res.send("All good... you can close this window.");
     })
 }
 
