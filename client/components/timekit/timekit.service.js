@@ -3,7 +3,7 @@
 (function() {
 
 function TimeKitResource($resource) {
-  return $resource('/api/timekit/:controller/:id', {
+  return $resource('/api/timekit/:controller/:id/:action/:requestID', {
     id: 'id'
   }, {
     getRequests: {
@@ -11,6 +11,12 @@ function TimeKitResource($resource) {
       isArray: true,
       params: {
         controller: 'requests'
+      }
+    },
+    takeAction: {
+      method: 'GET',
+      params: {
+        controller: 'request_action'
       }
     }
   });

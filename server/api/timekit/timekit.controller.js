@@ -22,6 +22,25 @@ function handleError(res, statusCode) {
   };
 }
 
+export function takeAction(req, res) {
+  return User.findOne({ _id: req.params.id }).exec()
+    .then(foundUser => {
+      var tkAction = unirest.put(`https://api.timekit.io/v2/bookings/${req.params.requestID}/${req.params.action}`)
+      tkAction.headers({
+        'Accept': 'application/json',
+        'Timekit-App': 'barknb',
+        'accept-encoding': 'gzip',
+        'content-type': 'application/json'
+      })
+      tkAction.send({});
+      tkAction.auth(foundUser.email, foundUser.timekittoken, true);
+      tkAction.end(confirmation => {
+        console.log(confirmation);
+        return res.json({});
+      })
+    })
+}
+
 // Get requests for a user
 export function getRequests(req, res) {
   return User.findOne({ _id: req.params.id }).exec()
@@ -37,7 +56,8 @@ export function getRequests(req, res) {
         var requests = requests.body.data;
         console.log(requests);
         _.remove(requests, r => r.completed === true);
-        _.remove(requests, r => r.graph === 'instant')
+        _.remove(requests, r => r.graph === 'instant');
+        _.remove(requests, r => r.possible_actions[0] === 'create');
         console.log(requests);
         return res.json(requests);
       })

@@ -3,6 +3,11 @@
     <h1>Requests for my doggies</h1>
   </div>
   <div class="">
+    <div class="panel panel-info" ng-show="re.noRequests">
+      <div class="panel-body">
+        {{re.noRequests}}
+      </div>
+    </div>
     <div class="panel panel-info" ng-repeat="request in re.requests">
       <div class="panel-heading">
         <h4>{{request.customers[0].name}}</h4>
@@ -13,7 +18,7 @@
           <li>{{request.customers[0].phone}}</li>
         </ul>
         <div class="btn-group">
-          <button class="btn" type="button" name="{{action}}" ng-click="" ng-repeat="action in request.possible_actions" ng-class="re.actionType(action)">{{action}}</button>
+          <button class="btn" type="button" name="{{action}}" ng-click="re.confirmRequest(action, request.id)" ng-repeat="action in request.possible_actions" ng-class="re.actionType(action)">{{action}}</button>
         </div>
       </div>
     </div>

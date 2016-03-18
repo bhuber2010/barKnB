@@ -8,6 +8,6 @@ var router = new Router();
 
 router.get('/callback', controller.saveAccount);
 router.get('/requests/:id', controller.getRequests);
-
+router.get('/request_action/:id/:action/:requestID', controller.takeAction);
 
 export default router;
