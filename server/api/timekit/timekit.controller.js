@@ -53,7 +53,7 @@ export function getRequests(req, res) {
       })
       tkRequests.auth(foundUser.email, foundUser.timekittoken, true);
       tkRequests.end(requests => {
-        var requests = requests.body.data;
+        requests = requests.body.data;
         console.log(requests);
         _.remove(requests, r => r.completed === true);
         _.remove(requests, r => r.graph === 'instant');
