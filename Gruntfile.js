@@ -335,7 +335,8 @@ module.exports = function (grunt) {
       app: {
         constants: function() {
           return {
-            appConfig: require('./' + grunt.config.get('ngconstant.options.configPath'))
+            appConfig: require('./' + grunt.config.get('ngconstant.options.configPath')).userRoles,
+            serverApi: require('./' + grunt.config.get('ngconstant.options.configPath')).serverApi
           };
         }
       }
