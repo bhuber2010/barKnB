@@ -61,7 +61,8 @@
         <div class="form-group">
           <label>State</label>
           <input type="text" name="state" class="form-control" ng-model="profile.userInfo.state"
-                 mongoose-error/>
+                uib-typeahead="state for state in profile.states | filter:$viewValue | limitTo:8"
+                mongoose-error/>
           <p class="help-block" ng-show="profileform.state.$error.mongoose">
               {{ profile.errors.other }}
           </p>
