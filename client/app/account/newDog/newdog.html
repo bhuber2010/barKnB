@@ -1,10 +1,10 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-12">
-      <h2 ng-hide="nd.edit">Add your pooch!</h2>
-      <h2 ng-show="nd.edit">Edit your pooch!</h2>
-    </div>
-    <div class="col-sm-12">
+  <div class="page-header">
+    <h2 ng-hide="nd.edit">Add your pooch!</h2>
+    <h2 ng-show="nd.edit">Edit your pooch!</h2>
+  </div>
+  <div class="flex-profile">
+    <section class="flex-container">
       <form class="form" name="newdog" ng-submit="nd.submitDog(newdog)" novalidate>
 
         <div class="form-group">
@@ -64,6 +64,19 @@
         <button ng-hide="nd.edit" class="btn btn-lg btn-primary" type="submit">Add dog</button>
         <button ng-show="nd.edit" class="btn btn-lg btn-primary" type="submit">Update Dog</button>
       </form>
-    </div>
+    </section>
+    <section class="flex-container">
+      <div class="">
+        <label>Preview</label>
+        <div class="thumbnail preview">
+          <img src="{{nd.dog.photo}}" alt="{{nd.dog.name}}">
+          <div class="caption">
+            <h3>{{nd.dog.name}}<br><small>{{nd.dog.breed}}</small></h3>
+            <p>{{nd.dog.bio}}</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
+
 </div>
