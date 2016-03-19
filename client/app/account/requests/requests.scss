@@ -5,3 +5,10 @@
   align-items: center;
   padding: 10px 20px;
 }
+
+.flex-col-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}

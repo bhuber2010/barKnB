@@ -9,16 +9,20 @@
       </div>
     </div>
     <div class="panel panel-info" ng-repeat="request in re.requests">
-      <div class="panel-heading">
+      <div class="panel-heading flex-request-row">
         <h4>{{request.customers[0].name}}</h4>
+        <div class="btn-group">
+          <button class="btn" type="button" name="{{action}}" ng-click="re.confirmRequest(action, request.id)" ng-repeat="action in request.possible_actions" ng-class="re.actionType(action)">{{action}}</button>
+        </div>
       </div>
       <div class="flex-request-row">
         <ul>
           <li>{{request.customers[0].email}}</li>
           <li>{{request.customers[0].phone}}</li>
         </ul>
-        <div class="btn-group">
-          <button class="btn" type="button" name="{{action}}" ng-click="re.confirmRequest(action, request.id)" ng-repeat="action in request.possible_actions" ng-class="re.actionType(action)">{{action}}</button>
+        <div class="flex-col-right">
+          <h4>Start: <small>{{request.attributes.event_info.start | date : 'medium'}}</small></h4>
+          <h4>End: <small>{{request.attributes.event_info.end | date : 'medium'}}</small></h4>
         </div>
       </div>
     </div>
