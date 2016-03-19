@@ -42,7 +42,7 @@ class SettingsController {
           console.log(data.settings);
           this.currentuserdata.updateUserSettings(data.settings);
           this.message = 'Settings successfully updated.';
-          this.$state.reload();
+          this.$state.go('profile');
         })
         .catch(() => {
           this.errors.other = 'Something went wrong!';
