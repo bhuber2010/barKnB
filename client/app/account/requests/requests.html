@@ -8,6 +8,11 @@
         {{re.noRequests}}
       </div>
     </div>
+    <div class="panel panel-info" loading>
+      <div class="panel-body">
+        Requests are loading
+      </div>
+    </div>
     <div class="panel panel-info" ng-repeat="request in re.requests">
       <div class="panel-heading flex-request-row">
         <h4>{{request.customers[0].name}}</h4>

@@ -1,16 +1,15 @@
-<div class="container flex-page">
-  <div class="flex-row">
-      <h1>Profile</h1>
-      <div class="btn-group">
-        <button class="btn btn-success" type="button" name="adddog" ui-sref="newdog">Add Dog</button>
-        <button class="btn btn-info" type="button" name="requests" ui-sref="requests({id: profile.userInfo._id})">Requests</button>
-        <button class="btn btn-default" type="button" name="settings" ui-sref="settings">Settings</button>
-        <button class="btn btn-warning" type="button" name="changepwd" ui-sref="password">Change Password</button>
-        <button class="btn btn-danger" type="button" name="bookingjs" ng-click="profile.connectTimekit()">Connect Bookings Feature</button>
-      </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12">
+<div class="flex-profile">
+  <section class="flex-container">
+    <div class="page-header">
+        <h1>Profile</h1>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-success" type="button" name="adddog" ui-sref="newdog">Add Dog</button>
+      <button class="btn btn-info" type="button" name="requests" ui-sref="requests({id: profile.userInfo._id})">Requests</button>
+      <button class="btn btn-default" type="button" name="settings" ui-sref="settings">Settings</button>
+      <button class="btn btn-warning" type="button" name="changepwd" ui-sref="password">Change Password</button>
+      <button class="btn btn-danger" type="button" name="bookingjs" ng-click="profile.connectTimekit()">Connect Bookings Feature</button>
+    </div>
       <form class="form" name="profileform" ng-submit="profile.updateProfile(profileform)" novalidate>
 
         <div class="form-group">
@@ -79,14 +78,15 @@
 
         <button class="btn btn-lg btn-primary" type="submit">Update Profile</button>
       </form>
+
+
+  </section>
+  <section class="flex-container">
+    <div class="page-header">
+      <h2>My Dogs</h2>
     </div>
-  </div>
-  <div class="page-header">
-    <h2>My Dogs</h2>
-  </div>
-  <div class="row">
-    <div class="col-sm-6 col-md-4" ng-repeat="dog in profile.usersDogs">
-      <div class="thumbnail">
+    <div class="dog-list">
+      <div class="thumbnail" ng-repeat="dog in profile.usersDogs">
         <img src="{{dog.photo}}" alt="{{dog.name}}">
         <div class="caption">
           <h3>{{dog.name}}<br><small>{{dog.breed}}</small></h3>
@@ -98,5 +98,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </div>

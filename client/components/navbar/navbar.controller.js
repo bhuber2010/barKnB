@@ -10,17 +10,34 @@ class NavbarController {
   isCollapsed = true;
   //end-non-standard
 
-  constructor(Auth, $window, $rootScope) {
+  constructor(Auth, $window, $rootScope, currentuserdata) {
     this.$window = $window;
     this.$rootScope = $rootScope;
     this.isLoggedIn = Auth.isLoggedIn;
     this.isAdmin = Auth.isAdmin;
     this.getCurrentUser = Auth.getCurrentUser;
+    this.currentuserdata = currentuserdata;
+
 
   }
 
   $onInit() {
     this.boolChangeClass = this.$rootScope.boolChangeClass;
+
+    this.currentuserdata.getUserData()
+      .then(userData => {
+        console.log(userData);
+        this.userInfo = {
+          _id: userData._id,
+          name: userData.name,
+          email: userData.email,
+          address: userData.address,
+          telephone: userData.telephone,
+          city: userData.city,
+          state: userData.state,
+          about: userData.about
+        }
+      })
   }
 
 

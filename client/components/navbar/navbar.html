@@ -14,7 +14,6 @@
         <li ng-repeat="item in nav.menu" ui-sref-active="active">
             <a ui-sref="{{item.state}}">{{item.title}}</a>
         </li>
-        <li ng-show="nav.isAdmin()" ui-sref-active="active"><a ui-sref="admin">Admin</a></li>
         <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="dashboard">Dashboard</a></li>
       </ul>
 
@@ -22,6 +21,7 @@
         <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="signup">Sign up</a></li>
         <li ng-hide="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="login">Login</a></li>
         <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="newdog">Add Dog</a></li>
+        <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="requests({id: nav.userInfo._id})">Requests</a></li>
         <li ng-show="nav.isLoggedIn()" ui-sref-active="active"><a ui-sref="profile">{{ nav.getCurrentUser().name }} <span class="glyphicon glyphicon-cog"></span></a></li>
         <li ng-show="nav.isLoggedIn()"><a ui-sref="logout">Logout</a></li>
       </ul>
