@@ -14,3 +14,24 @@ div.dog-schedule {
   }
 
 }
+
+.dog-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-height: 900px;
+  overflow-y: scroll;
+
+  .thumbnail {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30%;
+    margin: 1%;
+
+    img {
+      margin: 2%;
+    }
+  }
+}
