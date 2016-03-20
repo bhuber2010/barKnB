@@ -16,11 +16,13 @@
         ng-true-value="'{{dash.userMode.care.name}}'"
         ng-false-value="'{{dash.userMode.need.name}}'">
   </div>
-  <div class="thumbnail care-type" ng-repeat="actv in dash.dashdata.activities" ui-sref='dashSearch({mode: dash.userMode.selectedMode, activity: actv.id})'>
-    <img class="thumbnail-img" src="{{actv.thumbnail}}" alt="...">
-    <div class="caption flex-col-center">
-      <h3>{{actv.name}}</h3>
-      <p>{{actv.details}}</p>
+  <div class="care-type">
+    <div class="thumbnail" ng-repeat="actv in dash.dashdata.activities" ui-sref='dashSearch({mode: dash.userMode.selectedMode, activity: actv.id})'>
+      <img class="thumbnail-img" src="{{actv.thumbnail}}" alt="...">
+      <div class="caption flex-col-center">
+        <h3>{{actv.name}}</h3>
+        <p>{{actv.details}}</p>
+      </div>
     </div>
   </div>
 </div>

@@ -1,114 +1,110 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12">
-      <h2>Edit Settings</h2>
-    </div>
-    <div class="col-sm-12">
-      <form class="form" name="settingsform" ng-submit="vm.updateSettings(settingsform)" novalidate>
-
-        <div class="form-group">
-          <label>Are you an owner?</label>
-          <input
-              name="ownertoggle"
-              bs-switch
-              ng-model="vm.userSettings.owner"
-              type="checkbox"
-              switch-label=""
-              switch-icon=""
-              switch-on-text="Owner"
-              switch-off-text="Sitter Only"
-              switch-on-color="primary"
-              switch-off-color="info"
-              switch-label-width="60px"
-              switch-handle-width="80px"
-              ng-true-value="true"
-              ng-false-value="false"
-              mongoose-error>
-          <p class="help-block" ng-show="settingsform.searchradius.$error.mongoose">
-              {{ vm.errors.other }}
-          </p>
-        </div>
-
-        <div class="form-group">
-          <label>Default Search Radius</label>
-          <input type="text" name="searchradius" class="form-control" ng-model="vm.userSettings.search_radius"
-                 mongoose-error/>
-          <p class="help-block" ng-show="settingsform.searchradius.$error.mongoose">
-              {{ vm.errors.other }}
-          </p>
-        </div>
-
-        <div class="form-group">
-          <label>Available now</label>
-          <input
-              name="now"
-              bs-switch
-              ng-model="vm.userSettings.now"
-              type="checkbox"
-              switch-label=""
-              switch-icon=""
-              switch-on-text="On"
-              switch-off-text="Off"
-              switch-on-color="primary"
-              switch-off-color="info"
-              switch-label-width="40px"
-              switch-handle-width="40px"
-              ng-true-value="true"
-              ng-false-value="false"
-              mongoose-error>
-          <p class="help-block" ng-show="settingsform.now.$error.mongoose">
-              {{ vm.errors.other }}
-          </p>
-        </div>
-
-        <div class="form-group">
-          <label>Calendar publicly viewable</label>
-          <input
-              name="calendar"
-              bs-switch
-              ng-model="vm.userSettings.calendar_public"
-              type="checkbox"
-              switch-label=""
-              switch-icon=""
-              switch-on-text="On"
-              switch-off-text="Off"
-              switch-on-color="primary"
-              switch-off-color="info"
-              switch-label-width="40px"
-              switch-handle-width="40px"
-              ng-true-value="true"
-              ng-false-value="false"
-              mongoose-error>
-          <p class="help-block" ng-show="settingsform.calendar.$error.mongoose">
-              {{ vm.errors.other }}
-          </p>
-        </div>
-
-        <div class="form-group">
-          <label>Account active</label>
-          <input
-              name="accstatus"
-              bs-switch
-              ng-model="vm.userSettings.acnt_active"
-              type="checkbox"
-              switch-label=""
-              switch-icon=""
-              switch-on-text="On"
-              switch-off-text="Off"
-              switch-on-color="primary"
-              switch-off-color="info"
-              switch-label-width="40px"
-              switch-handle-width="40px"
-              ng-true-value="true"
-              ng-false-value="false"
-              mongoose-error>
-          <p class="help-block" ng-show="settingsform.accstatus.$error.mongoose">
-              {{ vm.errors.other }}
-          </p>
-        </div>
-
-        <button class="btn btn-lg btn-primary" type="submit">Save Settings</button>
-      </form>
-    </div>
+<section class="flex-container flex-page">
+  <div class="page-header">
+    <h1>Edit Settings</h1>
   </div>
-</div>
+  <form class="form" name="settingsform" ng-submit="vm.updateSettings(settingsform)" novalidate>
+
+    <div class="form-group flex-form-group">
+      <label>Are you an owner?</label>
+      <bs-switch
+          name="ownertoggle"
+          bs-switch
+          ng-model="vm.userSettings.owner"
+          type="checkbox"
+          switch-label=""
+          switch-icon=""
+          switch-on-text="Owner"
+          switch-off-text="Sitter Only"
+          switch-on-color="primary"
+          switch-off-color="info"
+          switch-label-width="60px"
+          switch-handle-width="80px"
+          ng-true-value="true"
+          ng-false-value="false"
+          mongoose-error>
+      <p class="help-block" ng-show="settingsform.searchradius.$error.mongoose">
+          {{ vm.errors.other }}
+      </p>
+    </div>
+
+    <div class="form-group flex-form-group">
+      <label>Default Search Radius</label>
+      <input type="number" name="searchradius" class="form-control" ng-model="vm.userSettings.search_radius"
+             mongoose-error/>
+      <p class="help-block" ng-show="settingsform.searchradius.$error.mongoose">
+          {{ vm.errors.other }}
+      </p>
+    </div>
+
+    <div class="form-group flex-form-group">
+      <label>Available now</label>
+      <bs-switch
+          name="now"
+          bs-switch
+          ng-model="vm.userSettings.now"
+          type="checkbox"
+          switch-label=""
+          switch-icon=""
+          switch-on-text="On"
+          switch-off-text="Off"
+          switch-on-color="primary"
+          switch-off-color="info"
+          switch-label-width="40px"
+          switch-handle-width="40px"
+          ng-true-value="true"
+          ng-false-value="false"
+          mongoose-error>
+      <p class="help-block" ng-show="settingsform.now.$error.mongoose">
+          {{ vm.errors.other }}
+      </p>
+    </div>
+
+    <div class="form-group flex-form-group">
+      <label>Calendar publicly viewable</label>
+      <bs-switch
+          name="calendar"
+          bs-switch
+          ng-model="vm.userSettings.calendar_public"
+          type="checkbox"
+          switch-label=""
+          switch-icon=""
+          switch-on-text="On"
+          switch-off-text="Off"
+          switch-on-color="primary"
+          switch-off-color="info"
+          switch-label-width="40px"
+          switch-handle-width="40px"
+          ng-true-value="true"
+          ng-false-value="false"
+          mongoose-error>
+      <p class="help-block" ng-show="settingsform.calendar.$error.mongoose">
+          {{ vm.errors.other }}
+      </p>
+    </div>
+
+    <div class="form-group flex-form-group">
+      <label>Account active</label>
+      <bs-switch
+          name="accstatus"
+          bs-switch
+          ng-model="vm.userSettings.acnt_active"
+          type="checkbox"
+          switch-label=""
+          switch-icon=""
+          switch-on-text="On"
+          switch-off-text="Off"
+          switch-on-color="primary"
+          switch-off-color="info"
+          switch-label-width="40px"
+          switch-handle-width="40px"
+          ng-true-value="true"
+          ng-false-value="false"
+          mongoose-error>
+      <p class="help-block" ng-show="settingsform.accstatus.$error.mongoose">
+          {{ vm.errors.other }}
+      </p>
+    </div>
+
+    <button class="btn btn-lg btn-primary" type="submit">Save Settings</button>
+  </form>
+</section>

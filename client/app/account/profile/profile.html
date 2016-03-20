@@ -6,7 +6,7 @@
     <div class="btn-group">
       <button class="btn btn-success" type="button" name="adddog" ui-sref="newdog">Add Dog</button>
       <button class="btn btn-info" type="button" name="requests" ui-sref="requests({id: profile.userInfo._id})">Requests</button>
-      <button class="btn btn-default" type="button" name="settings" ui-sref="settings">Settings</button>
+      <button class="btn btn-settings" type="button" name="settings" ui-sref="settings">Settings</button>
       <button class="btn btn-warning" type="button" name="changepwd" ui-sref="password">Change Password</button>
       <button class="btn btn-danger" type="button" name="bookingjs" ng-click="profile.connectTimekit()">Connect Bookings Feature</button>
     </div>
@@ -23,7 +23,7 @@
 
         <div class="form-group">
           <label>E-mail</label>
-          <input type="text" name="email" class="form-control" ng-model="profile.userInfo.email"
+          <input type="email" name="email" class="form-control" ng-model="profile.userInfo.email"
                  mongoose-error/>
           <p class="help-block" ng-show="profileform.email.$error.mongoose">
               {{ profile.errors.other }}
@@ -32,7 +32,7 @@
 
         <div class="form-group">
           <label>Phone Number</label>
-          <input type="text" name="telephone" class="form-control" ng-model="profile.userInfo.telephone"
+          <input type="tel" name="telephone" class="form-control" ng-model="profile.userInfo.telephone"
                  mongoose-error/>
           <p class="help-block" ng-show="profileform.telephone.$error.mongoose">
               {{ profile.errors.other }}
@@ -92,7 +92,7 @@
           <h3>{{dog.name}}<br><small>{{dog.breed}}</small></h3>
           <p>{{dog.bio}}</p>
           <p>
-            <a ui-sref="profile" class="btn btn-primary" role="button">View Schedule</a>
+            <a ui-sref="profile" class="btn btn-info" role="button">View Schedule</a>
             <a ui-sref="editdog({dogID: dog._id})" class="btn btn-warning" role="button">Edit Dog</a>
           </p>
         </div>

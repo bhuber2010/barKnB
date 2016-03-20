@@ -1,12 +1,10 @@
 header {
-    margin-top: -60px;
     position: absolute;
     min-height: auto;
     text-align: center;
     color: #fff;
     width: 100%;
-    background-color: #c9c9c9;
-    background-image: url('https://splashbase.s3.amazonaws.com/lifeofpix/regular/Life-of-Pix-free-stock-photos-Slate-Stone-Xeromatic-1440x953.jpg');
+    background-image: url('../assets/images/Following-their-instincts.jpg');
     background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -60,7 +58,7 @@ header .header-content .inner p {
 
     header .header-content {
         position: absolute;
-        top: 50%;
+        top: 28%;
         padding: 0 50px;
         -webkit-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
@@ -85,7 +83,6 @@ header .header-content .inner p {
     }
 
     section {
-        min-height: 600px;
         padding: 100px 0;
     }
 

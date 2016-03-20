@@ -1,8 +1,31 @@
+
+.login {
+  width: 50%;
+
+  oauth-buttons > a {
+    max-width: 250px;
+  }
+}
+
 .flex-row {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+.flex-form-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  label {
+    padding: 2%;
+  }
+
+  input {
+    width: 65px;
+  }
 }
 
 .flex-col {
@@ -20,7 +43,7 @@
   margin: 0 2%;
 
   .flex-container {
-    // max-width: 45%;
+    margin-top: 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
