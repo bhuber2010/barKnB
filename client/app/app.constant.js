@@ -5,7 +5,7 @@ angular.module('barKnBApp.constants', [])
 
 .constant('appConfig', ['guest','user','admin'])
 
-.constant('serverApi', 'http://localhost:9000')
+.constant('serverApi', 'https://barknb.herokuapp.com')
 
 ;
 })(angular);
