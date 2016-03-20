@@ -1,3 +1,17 @@
+.panel-request {
+  background-color: rgba(0, 0, 0, 0.3);
+
+  h4 {
+    color: #fff;
+  }
+
+  .panel-heading {
+    color: #31708f;
+    background-color: rgba(42, 213, 79, 0.05);
+    border-color: rgba(42, 213, 79, 0.30);
+  }
+}
+
 .flex-request-row {
   display: flex;
   flex-direction: row;

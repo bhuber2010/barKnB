@@ -3,17 +3,17 @@
     <h1>Requests for my doggies</h1>
   </div>
   <div class="">
-    <div class="panel panel-info" ng-show="re.noRequests">
+    <div class="panel panel-request" ng-show="re.noRequests">
       <div class="panel-body">
         {{re.noRequests}}
       </div>
     </div>
-    <div class="panel panel-info" loading>
+    <div class="panel panel-request" loading>
       <div class="panel-body">
         Requests are loading
       </div>
     </div>
-    <div class="panel panel-info" ng-repeat="request in re.requests">
+    <div class="panel panel-request" ng-repeat="request in re.requests">
       <div class="panel-heading flex-request-row">
         <h4>{{request.customers[0].name}}</h4>
         <div class="btn-group">
