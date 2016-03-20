@@ -25,6 +25,8 @@ module.exports = function(config) {
       'client/bower_components/angular-bootstrap-toggle-switch/angular-toggle-switch.js',
       'client/bower_components/bootstrap-switch/dist/js/bootstrap-switch.js',
       'client/bower_components/angular-bootstrap-switch/dist/angular-bootstrap-switch.js',
+      'client/bower_components/flow.js/dist/flow.js',
+      'client/bower_components/ng-flow/dist/ng-flow.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'node_modules/socket.io-client/socket.io.js',

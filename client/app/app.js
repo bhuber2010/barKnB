@@ -12,7 +12,8 @@ angular.module('barKnBApp', [
   'ui.bootstrap',
   'validation.match',
   'toggle-switch',
-  'frapontillo.bootstrap-switch'
+  'frapontillo.bootstrap-switch',
+  'flow'
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider

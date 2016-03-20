@@ -1,13 +1,14 @@
 'use strict';
 
 class NewDogController {
-  constructor($scope, $state, currentuserdata, DogData, User, Util) {
+  constructor($scope, $state, $window, currentuserdata, DogData, User, Util) {
     this.errors = {};
     this.submitted = false;
 
     this.currentuserdata = currentuserdata;
     this.safeCb = Util.safeCb;
     this.$state = $state;
+    this.$window = $window;
     this.User = User;
     this.DogData = DogData;
 
@@ -17,8 +18,25 @@ class NewDogController {
           console.log(userData);
           this.userData = userData;
         })
+
+      this.ospry = new this.$window.Ospry('pk-test-bq46qdb2rtqoxaktikdso77w');
+
     });
 
+  }
+
+  uploadImg(img) {
+    console.log(img);
+    // this.ospry.up({
+    //   files: img.files[0].file,
+    //   imageReady: function(err, metadata, i) {
+    //     if (err === null) {
+    //       console.log('Image uploaded to: ', metadata);
+    //     } else {
+    //       console.log(err);
+    //     }
+    //   }
+    // });
   }
 
   submitDog(form) {

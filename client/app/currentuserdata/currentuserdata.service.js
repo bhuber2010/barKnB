@@ -28,8 +28,8 @@ angular.module('barKnBApp')
     }
 
     var getUser = () => {
-      var data = Auth.getCurrentUser()
-      return data.$promise
+      var data = Auth.getCurrentUser(null)
+      return data
           .then((userData) => {
             loggedInUser = userData;
             return userData
