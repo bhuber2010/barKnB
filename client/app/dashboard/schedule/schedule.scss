@@ -1,3 +1,46 @@
 schedule {
   padding-top: 5%;
+
+  .dog-schedule {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  .bookingjs {
+    background-color: rgba(0, 0, 0, 0.3);
+
+    .fc-toolbar {
+      background-color: rgba(0, 0, 0, 0.3);
+
+      .fc-today-button {
+        color: white;
+      }
+      
+      .fc-button {
+        color: white;
+        background-color: rgba(0, 0, 0, 0);
+      }
+    }
+
+    .fc-view-container {
+      background-color: rgba(0, 0, 0, 0.3);
+      color: #333;
+    }
+
+    .bookingjs-timezonehelper {
+      color: #aeaeae;
+      text-align: center;
+      padding: 7px 10px;
+      background-color: rgba(0, 0, 0, 0.3);
+      border-top: 1px solid #ececec;
+      min-height: 15px;
+      z-index: 20;
+      border-radius: 0 0 4px 4px;
+    }
+
+    .bookingjs-displayname {
+      top: 44px;
+      padding: 0 20px;
+      color: white;
+    }
+  }
 }
