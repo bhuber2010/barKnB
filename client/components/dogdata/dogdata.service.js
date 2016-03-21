@@ -26,6 +26,10 @@ function DogResource($resource) {
       params: {
         controller: 'updateDog'
       }
+    },
+    removeDog: {
+      method: 'DELETE',
+      params: {null}
     }
   });
 }

@@ -92,8 +92,8 @@
           <h3>{{dog.name}}<br><small>{{dog.breed}}</small></h3>
           <p>{{dog.bio}}</p>
           <p>
-            <a ui-sref="profile" class="btn btn-info" role="button">View Schedule</a>
-            <a ui-sref="editdog({dogID: dog._id})" class="btn btn-warning" role="button">Edit Dog</a>
+            <a ui-sref="editdog({dogID: dog._id})" class="btn btn-warning" role="button">Edit</a>
+            <a ng-click="profile.removeDog(dog)" class="btn btn-danger" role="button">Remove</a>
           </p>
         </div>
       </div>

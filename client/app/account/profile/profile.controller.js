@@ -36,7 +36,7 @@ class ProfileController {
         })
         .then((userID) => {
           DogData.getOwnDogs({ id: userID}).$promise
-          .then((dogs) => {
+          .then(dogs => {
             console.log(dogs);
             this.usersDogs = dogs;
           })
@@ -44,6 +44,16 @@ class ProfileController {
 
     });
 
+  }
+
+  removeDog(dog) {
+    this.DogData.removeDog({ id: dog._id }).$promise
+      .then(data => {
+        this.DogData.getOwnDogs({ id: dog.owner_user }).$promise
+        .then(dogs => {
+          this.usersDogs = dogs;
+        })
+      })
   }
 
   updateProfile(form, callback) {
