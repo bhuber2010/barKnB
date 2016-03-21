@@ -18,6 +18,14 @@
       align-items: center;
     }
 
+    .care-options {
+      min-width: 20%;
+    }
+
+    .care-options:hover {
+      background-color: rgba(0, 0, 0, 0.5); 
+    }
+
     .thumbnail-img {
       height: 150px;
       width: auto;

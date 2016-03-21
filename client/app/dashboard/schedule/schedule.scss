@@ -24,6 +24,19 @@ schedule {
     .fc-view-container {
       background-color: rgba(0, 0, 0, 0.3);
       color: #333;
+
+      .fc-event {
+        background-color: rgba(254, 255, 255, 0.9);
+      }
+
+      .fc-event:hover {
+        background-color: rgba(24, 238, 238, 0.67);
+        color: rgb(201, 68, 68);
+      }
+    }
+
+    .fc-unthemed .fc-today {
+       background-color: rgba(0, 0, 0, 0.3);
     }
 
     .bookingjs-timezonehelper {
