@@ -8,8 +8,10 @@ class WelcomeComponent {
     this.$http = $http;
     this.socket = socket;
 
+    $document.find('body').removeClass('tint').addClass('prelogin')
+
     $scope.$on('$stateChangeSuccess', () => {
-      $document.find('body').removeClass('tint')
+      
     })
   }
 

@@ -2,10 +2,11 @@
 (function(){
 
 class DashboardComponent {
-  constructor($state, dashdata) {
+  constructor($state, $document, dashdata) {
     this.dashdata = dashdata;
     this.message = 'Dashboard Search';
     this.userMode = dashdata.userMode;
+    $document.find('body').removeClass('prelogin').addClass('tint');
   }
 }
 
