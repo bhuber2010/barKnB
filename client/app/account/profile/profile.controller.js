@@ -1,7 +1,7 @@
 'use strict';
 
 class ProfileController {
-  constructor($scope, $state, $window, currentuserdata, User, DogData, Timekit, Util, serverApi) {
+  constructor($scope, $document, $state, $window, currentuserdata, User, DogData, Timekit, Util, serverApi) {
     this.errors = {};
     this.submitted = false;
 
@@ -14,11 +14,14 @@ class ProfileController {
     this.Timekit = Timekit;
     this.serverApi = serverApi;
 
+    $document.find('body').removeClass('prelogin').addClass('tint');
+
     this.states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine',
                   'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Dakota', 'North Carolina', 'Ohio',
                   'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
 
     $scope.$on('$stateChangeSuccess', () => {
+
       this.currentuserdata.getUserData()
         .then(userData => {
           console.log(userData);

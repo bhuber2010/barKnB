@@ -11,8 +11,7 @@ router
     failureRedirect: '/signup',
     scope: [
       'profile',
-      'email',
-      'https://www.googleapis.com/auth/calendar'
+      'email'
     ],
     session: false
   }))

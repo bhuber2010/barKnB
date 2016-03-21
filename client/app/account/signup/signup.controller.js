@@ -7,9 +7,13 @@ class SignupController {
   submitted = false;
   //end-non-standard
 
-  constructor(Auth, $state) {
+  constructor(Auth, $scope, $document, $state) {
     this.Auth = Auth;
     this.$state = $state;
+
+    $scope.$on('$stateChangeSuccess', () => {
+      $document.find('body').addClass('tint')
+    })
   }
 
   register(form) {
@@ -23,7 +27,7 @@ class SignupController {
       })
       .then(() => {
         // Account created, redirect to home
-        this.$state.go('dashboard');
+        this.$state.go('profile');
       })
       .catch(err => {
         err = err.data;

@@ -13,7 +13,10 @@ angular.module('barKnBApp')
         url: '/logout?referrer',
         referrer: 'welcome',
         template: '',
-        controller: function($state, Auth) {
+        controller: function($state, $document, Auth) {
+
+          $document.find('body').removeClass('tint').addClass('prelogin');
+
           var referrer = $state.params.referrer ||
                           $state.current.referrer ||
                           'welcome';

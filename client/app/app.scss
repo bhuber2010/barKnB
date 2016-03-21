@@ -25,10 +25,18 @@ body {
     height: 100%;
 }
 
+body.prelogin {
+  background-color: rgba(40, 40, 40, 0);
+  background-image: url(../assets/images/Following-their-instincts.jpg);
+}
+
+body.tint {
+  background-color: rgba(40, 40, 40, 0.45);
+}
+
 body {
     font-family: 'Questrial','Helvetica Neue',Arial,sans-serif;
-    // background-color: #282828;
-    background-color: rgba(#282828, 0.45);
+    // background-color: rgba(40, 40, 40, 0.45);
     background-image: url(../assets/images/bluesky_grass_backgroudn.jpg);
     background-position: center;
     background-size: cover;
