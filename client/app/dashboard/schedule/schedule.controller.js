@@ -3,10 +3,14 @@
 
 class ScheduleComponent {
   constructor($stateParams, $window, DogData, currentuserdata) {
+    this.$stateParams = $stateParams;
     this.TimekitBooking = $window.TimekitBooking;
     this.DogData = DogData;
     this.currentuserdata = currentuserdata;
     this.widget = new this.TimekitBooking();
+
+    this.duration = this.durationCheck($stateParams.activity).duration;
+    this.view = this.durationCheck($stateParams.activity).view;
 
     this.DogData.get({ id: $stateParams.id}).$promise
       .then((dog) => {
@@ -28,14 +32,16 @@ class ScheduleComponent {
               calendar: dog.owner_user.timekitcal,
               avatar: dog.owner_user.google.image.url,
               fullCalendar: {
-                defaultView: 'basicWeek'
+                defaultView: this.view,
+                allDaySlot: true
               },
               bookingGraph: 'confirm_decline',
               timekitConfig: {
                 app: 'barknb'
               },
               timekitFindTime: {
-                ignore_all_day_events: true
+                ignore_all_day_events: true,
+                length: this.duration
               },
               timekitCreateBooking: {
                 graph: 'confirm_decline'
@@ -67,7 +73,8 @@ class ScheduleComponent {
                 },
                 comment: {
                   enabled: true,
-                  prefilled: `I'd love to your dog!`,
+                  placeholder: 'Comment (optional)',
+                  prefilled: false,
                   required: false,
                   locked: false
                 }
@@ -82,6 +89,17 @@ class ScheduleComponent {
       })
 
   }
+
+  durationCheck(activity) {
+    if (activity === 'dogwalk') {
+      return {duration: '2 hour', view: 'basicWeek'}
+    } else if (activity === 'shortcare') {
+      return {duration: '1 day', view: 'month'}
+    } else {
+      return {duration: '1 week', view: 'month'}
+    }
+  }
+
 }
 
 angular.module('barKnBApp')

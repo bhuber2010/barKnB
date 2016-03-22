@@ -25,6 +25,10 @@ schedule {
       background-color: rgba(0, 0, 0, 0.3);
       color: #333;
 
+      .fc-day-number {
+        color: white;
+      }
+
       .fc-event {
         background-color: rgba(254, 255, 255, 0.9);
       }

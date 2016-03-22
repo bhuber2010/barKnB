@@ -5,6 +5,7 @@ class CaretakerComponent {
   constructor(dashdata, DogData, $stateParams, lodash) {
     this.dashdata = dashdata;
     this.DogData = DogData;
+    this.$stateParams = $stateParams;
     this.selectedBreed = '';
     this.selectedCity = '';
     this.selectedState = '';
