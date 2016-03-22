@@ -18,7 +18,7 @@ angular.module('barKnBApp.auth')
 
           event.preventDefault();
           return Auth.isLoggedIn(_.noop).then(is => {
-            $state.go(is ? 'welcome' : 'login');
+            $state.go(is ? 'profile' : 'login');
           });
         });
       } else {
@@ -28,7 +28,7 @@ angular.module('barKnBApp.auth')
           }
 
           event.preventDefault();
-          $state.go('welcome');
+          $state.go('profile');
         });
       }
     });

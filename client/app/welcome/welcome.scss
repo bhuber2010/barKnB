@@ -2,7 +2,8 @@ header {
     position: absolute;
     min-height: auto;
     text-align: center;
-    color: #fff;
+    // color: #fff;
+    color: rgb(154, 41, 175);
     width: 100%;
     // background-image: url('../assets/images/Following-their-instincts.jpg');
     background-position: center;
@@ -18,6 +19,17 @@ header .header-content {
     padding: 100px 15px;
     text-align: center;
     z-index: 2;
+
+    .get-started {
+      color: purple;
+      border-color: purple;
+      margin: 5px;
+    }
+
+    .get-started:hover {
+      background-color: purple;
+      color: white;
+    }
 }
 
 header .header-content .inner h1 {
@@ -58,7 +70,7 @@ header .header-content .inner p {
 
     header .header-content {
         position: absolute;
-        top: 28%;
+        top: 26%;
         padding: 0 50px;
         -webkit-transform: translateY(-50%);
         -ms-transform: translateY(-50%);

@@ -4,15 +4,15 @@
 
 class WelcomeComponent {
 
-  constructor($scope, $document, $http, socket) {
+  constructor($state, $document, $http, socket, Auth) {
     this.$http = $http;
     this.socket = socket;
+    this.Auth = Auth;
 
     $document.find('body').removeClass('tint').addClass('prelogin')
 
-    $scope.$on('$stateChangeSuccess', () => {
-      
-    })
+    Auth.isLoggedIn() ? this.loggedIn = true : this.loggedIn = false;
+
   }
 
 }
@@ -20,7 +20,8 @@ class WelcomeComponent {
 angular.module('barKnBApp')
   .component('welcome', {
     templateUrl: 'app/welcome/welcome.html',
-    controller: WelcomeComponent
+    controller: WelcomeComponent,
+    controllerAs: 'welcome'
   });
 
 })();
