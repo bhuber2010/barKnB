@@ -9,9 +9,6 @@ class ScheduleComponent {
     this.currentuserdata = currentuserdata;
     this.widget = new this.TimekitBooking();
 
-    this.duration = this.durationCheck($stateParams.activity).duration;
-    this.view = this.durationCheck($stateParams.activity).view;
-
     this.DogData.get({ id: $stateParams.id}).$promise
       .then((dog) => {
         console.log(dog);
@@ -25,6 +22,8 @@ class ScheduleComponent {
         };
         this.currentuserdata.getUserData()
           .then(currentUser => {
+            this.duration = this.durationCheck($stateParams.activity).duration;
+            this.view = this.durationCheck($stateParams.activity).view;
             this.widget.init({
               name: dog.owner_user.name,
               email: dog.owner_user.email,

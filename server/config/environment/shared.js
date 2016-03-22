@@ -6,4 +6,3 @@ exports = module.exports = {
   serverApi: 'https://barknb.herokuapp.com'
   // serverApi: 'http://localhost:9000'
 };
-  

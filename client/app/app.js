@@ -14,7 +14,6 @@ angular.module('barKnBApp', [
   'toggle-switch',
   'frapontillo.bootstrap-switch',
   'flow',
-  'angularMoment',
   'ngLodash'
 ])
   .config(function($urlRouterProvider, $locationProvider) {
