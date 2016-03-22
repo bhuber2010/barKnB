@@ -18,7 +18,11 @@ class ScheduleComponent {
           photo: dog.photo,
           bio: dog.bio,
           shot: dog.shot,
-          vet_contact: dog.vet_contact
+          vet_contact: dog.vet_contact,
+          owner_user: {
+            city: dog.owner_user.city,
+            state: dog.owner_user.state
+          }
         };
         this.currentuserdata.getUserData()
           .then(currentUser => {

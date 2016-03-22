@@ -62,6 +62,14 @@ body {
     }
 }
 
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary, .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary {
+  background-color: rgba(69, 113, 227, 0.5);
+}
+
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-info, .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-info {
+  background-color: rgba(187, 62, 77, 0.5);
+}
+
 label {
   // color: #d3d3d3;
 }
