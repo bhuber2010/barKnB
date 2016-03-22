@@ -18,6 +18,13 @@ function TimeKitResource($resource) {
       params: {
         controller: 'request_action'
       }
+    },
+    getEvents: {
+      method: 'POST',
+      isArray: true,
+      params: {
+        controller: 'events'
+      }
     }
   });
 }

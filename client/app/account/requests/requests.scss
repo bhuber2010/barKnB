@@ -1,3 +1,15 @@
+.list-scroll {
+  overflow-y: scroll;
+}
+
+.split-5050 {
+  min-height: 45%;
+}
+
+.shrink-top-margin {
+  margin-top: 10px;
+}
+
 .panel-request {
   background-color: rgba(0, 0, 0, 0.3);
 
@@ -21,6 +33,7 @@
 }
 
 .flex-col-right {
+  flex-basis: 40%;
   display: flex;
   flex-direction: column;
   justify-content: center;

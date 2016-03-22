@@ -1,7 +1,7 @@
 'use strict';
 
 class NewDogController {
-  constructor($scope, $state, $window, currentuserdata, DogData, User, Util) {
+  constructor($scope, $state, $document, $window, currentuserdata, DogData, User, Util) {
     this.errors = {};
     this.submitted = false;
 
@@ -11,6 +11,8 @@ class NewDogController {
     this.$window = $window;
     this.User = User;
     this.DogData = DogData;
+
+    $document.find('body').removeClass('prelogin').addClass('tint');
 
     $scope.$on('$stateChangeSuccess', () => {
       this.currentuserdata.getUserData()

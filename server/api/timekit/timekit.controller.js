@@ -22,6 +22,7 @@ function handleError(res, statusCode) {
   };
 }
 
+// Take action on a Request
 export function takeAction(req, res) {
   return User.findOne({ _id: req.params.id }).exec()
     .then(foundUser => {
@@ -40,6 +41,31 @@ export function takeAction(req, res) {
       })
     })
 }
+
+// Get users Events
+export function getEvents(req, res) {
+  console.log(req.body);
+  return User.findOne({ _id: req.params.id }).exec()
+    .then(foundUser => {
+      // var tkEvents = unirest.get(`https://api.timekit.io/v2/calendars/${foundUser.timekitcal}?include=events`);
+      var tkEvents = unirest.get(`https://api.timekit.io/v2/events`);
+      tkEvents.headers({
+        'Accept': 'application/json',
+        'Timekit-App': 'barknb',
+        'accept-encoding': 'gzip',
+      });
+      tkEvents.query({
+        start: req.body.start,
+        end: req.body.end
+      })
+      tkEvents.auth(foundUser.email, foundUser.timekittoken, true);
+      tkEvents.end(data => {
+        console.log(data);
+        res.json(data.body.data);
+      })
+    })
+
+};
 
 // Get requests for a user
 export function getRequests(req, res) {

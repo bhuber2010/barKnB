@@ -1,16 +1,23 @@
 <div class="container flex-page">
   <div class="page-header">
     <h1>Available Dogs</h1>
+    <div class="">
+      <input type="text" name="search" class="form-control" placeholder="Search dogs" ng-model="ct.searchDogs">
+    </div>
+    <div class="">
+      <label class="" for="breed-filter">Filter by breed:</label>
+      <select class="form-control" name="breed-filter" ng-model="ct.selectedBreed">
+        <option value="">All</option>
+        <option ng-repeat="breed in ct.breeds" value="{{breed}}">{{breed}}</option>
+      </select>
+    </div>
   </div>
   <div class="dog-list">
-    <div class="thumbnail" ng-repeat="dog in ct.dogs">
+    <div ui-sref="schedule({id: dog._id})" class="thumbnail" ng-repeat="dog in ct.dogs | filter:ct.searchDogs | filter:ct.selectedBreed">
       <img src="{{dog.photo}}" alt="{{dog.name}}">
       <div class="caption">
         <h3>{{dog.name}}<br><small>{{dog.breed}}</small></h3>
         <p>{{dog.bio}}</p>
-        <p>
-          <a ui-sref="schedule({id: dog._id})" class="btn btn-primary" role="button">View Schedule</a>
-        </p>
       </div>
     </div>
   </div>

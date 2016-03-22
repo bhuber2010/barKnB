@@ -15,6 +15,13 @@ div.dog-schedule {
 
 }
 
+.page-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
 .dog-list {
   display: flex;
   flex-direction: row;
@@ -33,5 +40,10 @@ div.dog-schedule {
     img {
       margin: 2%;
     }
+  }
+
+  .thumbnail:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.5);
   }
 }

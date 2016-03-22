@@ -67,8 +67,7 @@ class ScheduleComponent {
                 },
                 comment: {
                   enabled: true,
-                  placeholder: 'Leave a comment (optional)',
-                  prefilled: false,
+                  prefilled: `I'd love to your dog!`,
                   required: false,
                   locked: false
                 }

@@ -1,7 +1,7 @@
 'use strict';
 
 class RequestController {
-  constructor($scope, $state, $stateParams, currentuserdata, Timekit) {
+  constructor($scope, $window, $document, $state, $stateParams, currentuserdata, Timekit) {
     this.errors = {};
 
     this.Timekit = Timekit;
@@ -9,9 +9,13 @@ class RequestController {
     this.$state = $state;
     this.$stateParams = $stateParams;
     this.noRequests = false;
+    this.moment = $window.moment;
+
+    $document.find('body').removeClass('prelogin').addClass('tint');
 
     $scope.$on('$stateChangeSuccess', () => {
       this.loadRequests();
+      this.loadEvents();
     });
 
   }
@@ -23,6 +27,17 @@ class RequestController {
         this.requests = requests;
         if (requests.length === 0) {
           this.noRequests = 'You currently have no reuqests';
+        }
+      })
+  }
+
+  loadEvents() {
+    this.Timekit.getEvents({id: this.$stateParams.id}, {start: this.moment.utc(Date.now()).format(), end: this.moment.utc(Date.now()).add(2, 'weeks').format()}).$promise
+      .then(events => {
+        console.log(events);
+        this.events = events;
+        if (events.length === 0) {
+          this.noEvents = 'What...? Your dogs schedule is wide open!';
         }
       })
   }

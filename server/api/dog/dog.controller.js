@@ -62,7 +62,7 @@ function handleError(res, statusCode) {
 
 // Gets a list of Dogs
 export function index(req, res) {
-  return Dog.find().exec()
+  return Dog.find().populate('owner_user').exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
