@@ -6,6 +6,8 @@ class CaretakerComponent {
     this.dashdata = dashdata;
     this.DogData = DogData;
     this.selectedBreed = '';
+    this.selectedCity = '';
+    this.selectedState = '';
     console.log(dashdata.userMode.selectedMode, $stateParams.activity);
     console.log(dashdata.activities[$stateParams.activity]);
 
@@ -16,11 +18,27 @@ class CaretakerComponent {
       })
       .then(doglist => {
         console.log(doglist);
-        var breeds = doglist.map((dog, i) => {
-          return dog.breed.toUpperCase();
+        var cats = {
+          breeds: [],
+          cities: [],
+          states: [],
+        };
+        doglist.forEach(dog => {
+          if (!dog.owner_user.city) {
+            dog.owner_user.city = 'Unknown';
+          }
+          if (!dog.owner_user.state) {
+            dog.owner_user.state = 'Unknown';
+          }
+          cats.breeds.push(dog.breed.toUpperCase());
+          cats.cities.push(dog.owner_user.city.toUpperCase());
+          cats.states.push(dog.owner_user.state.toUpperCase());
         })
-        breeds = lodash(breeds).uniq().value();
-        this.breeds = breeds
+
+        this.breeds = lodash(cats.breeds).uniq().value();
+        this.cities = lodash(cats.cities).uniq().value();
+        this.states = lodash(cats.states).uniq().value();
+
       })
   }
 

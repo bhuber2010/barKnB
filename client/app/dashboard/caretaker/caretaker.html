@@ -2,10 +2,25 @@
   <div class="page-header">
     <h1>Available Dogs</h1>
     <div class="">
+      <label class="" for="search">Search</label>
       <input type="text" name="search" class="form-control" placeholder="Search dogs" ng-model="ct.searchDogs">
     </div>
     <div class="">
-      <label class="" for="breed-filter">Filter by breed:</label>
+      <label class="" for="city-filter">City</label>
+      <select class="form-control" name="city-filter" ng-model="ct.selectedCity">
+        <option value="">All</option>
+        <option ng-repeat="city in ct.cities" value="{{city}}">{{city}}</option>
+      </select>
+    </div>
+    <div class="">
+      <label class="" for="state-filter">State</label>
+      <select class="form-control" name="state-filter" ng-model="ct.selectedState">
+        <option value="">All</option>
+        <option ng-repeat="state in ct.states" value="{{state}}">{{state}}</option>
+      </select>
+    </div>
+    <div class="">
+      <label class="" for="breed-filter">Breed</label>
       <select class="form-control" name="breed-filter" ng-model="ct.selectedBreed">
         <option value="">All</option>
         <option ng-repeat="breed in ct.breeds" value="{{breed}}">{{breed}}</option>
@@ -13,7 +28,7 @@
     </div>
   </div>
   <div class="dog-list">
-    <div ui-sref="schedule({id: dog._id})" class="thumbnail" ng-repeat="dog in ct.dogs | filter:ct.searchDogs | filter:ct.selectedBreed">
+    <div ui-sref="schedule({id: dog._id})" class="thumbnail" ng-repeat="dog in ct.dogs | filter:ct.searchDogs | filter: ct.selectedCity | filter: ct.selectedState | filter:ct.selectedBreed">
       <img src="{{dog.photo}}" alt="{{dog.name}}">
       <div class="caption">
         <h3>{{dog.name}}<br><small>{{dog.breed}}</small></h3>
