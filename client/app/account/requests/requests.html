@@ -1,6 +1,6 @@
 <div class="container flex-profile flex-page fixed-view">
   <div class="flex-container split-5050">
-    <div class="page-header shrink-top-margin">
+    <div class="page-header">
       <h1>Requests for my doggies</h1>
     </div>
     <div class="flex-container list-scroll">
@@ -23,12 +23,12 @@
         </div>
         <div class="flex-request-row">
           <div>
-            <h4><span class="glyphicon glyphicon-earphone"></span> <a href="mailto:{{request.customers[0].email}}"><small>{{request.customers[0].email}}</small></a></h4>
-            <h4><span class="glyphicon glyphicon-envelope"></span> <a href="tel:{{request.customers[0].phone}}"><small>{{request.customers[0].phone}}</small></a></h4>
+            <h4><span class="glyphicon glyphicon-earphone"></span> <a href="mailto:{{request.customers[0].email}}"><small class="small-detail">{{request.customers[0].email}}</small></a></h4>
+            <h4><span class="glyphicon glyphicon-envelope"></span> <a href="tel:{{request.customers[0].phone}}"><small class="small-detail">{{request.customers[0].phone}}</small></a></h4>
           </div>
           <div class="flex-col-right">
-            <h4>Start: <small>{{request.attributes.event_info.start | date : 'medium'}}</small></h4>
-            <h4>End: <small>{{request.attributes.event_info.end | date : 'medium'}}</small></h4>
+            <h4>Start: <small class="small-detail">{{request.attributes.event_info.start | date : 'medium'}}</small></h4>
+            <h4>End: <small class="small-detail">{{request.attributes.event_info.end | date : 'medium'}}</small></h4>
           </div>
         </div>
       </div>
@@ -50,12 +50,12 @@
         </div>
         <div class="flex-request-row">
           <div>
-            <h4>Where: <small>{{event.where}}</small></h4>
-            <h4>Description: <small>{{event.description}}</small></h4>
+            <h4>Where: <small class="small-detail">{{event.where}}</small></h4>
+            <h4>Description: <small class="small-detail">{{event.description}}</small></h4>
           </div>
           <div class="flex-col-right">
-            <h4>Start: <small>{{event.start | date : 'medium'}}</small></h4>
-            <h4>End: <small>{{event.end | date : 'medium'}}</small></h4>
+            <h4>Start: <small class="small-detail">{{event.start | date : 'medium'}}</small></h4>
+            <h4>End: <small class="small-detail">{{event.end | date : 'medium'}}</small></h4>
           </div>
         </div>
       </div>
