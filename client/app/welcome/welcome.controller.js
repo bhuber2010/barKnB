@@ -11,7 +11,7 @@ class WelcomeComponent {
 
     $document.find('body').removeClass('tint').addClass('prelogin')
 
-    Auth.isLoggedIn() ? this.loggedIn = true : this.loggedIn = false;
+    this.loggedIn = Auth.isLoggedIn();
 
   }
 
