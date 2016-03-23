@@ -11,7 +11,6 @@ class ScheduleComponent {
 
     this.DogData.get({ id: $stateParams.id}).$promise
       .then((dog) => {
-        console.log(dog);
         this.dog = {
           name: dog.name,
           breed: dog.breed,
@@ -84,7 +83,7 @@ class ScheduleComponent {
               },
               callbacks: {
                 createBookingSuccessful: (data) => {
-                  console.log('createBookingSuccessful', data)
+                  // console.log('createBookingSuccessful', data)
                 }
               }
             })

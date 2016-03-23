@@ -15,7 +15,6 @@ class EditDogController {
       this.edit = true;
       this.currentuserdata.getUserData()
         .then(userData => {
-          console.log(userData);
           this.userData = userData;
         })
       this.DogData.get({ id: $stateParams.dogID}).$promise
@@ -35,7 +34,6 @@ class EditDogController {
   }
 
   submitDog(form) {
-    console.log(form);
     this.submitted = true;
     var DogEdits = {};
     if (form.$valid) {
@@ -49,7 +47,6 @@ class EditDogController {
       this.DogData.updateDog({ id: this.$stateParams.dogID}, DogEdits)
         .$promise
         .then((data) => {
-          console.log(data);
           this.message = 'Profile successfully updated.';
           this.$state.go('profile');
         })

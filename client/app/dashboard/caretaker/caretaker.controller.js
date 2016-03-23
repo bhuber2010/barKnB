@@ -9,8 +9,6 @@ class CaretakerComponent {
     this.selectedBreed = '';
     this.selectedCity = '';
     this.selectedState = '';
-    console.log(dashdata.userMode.selectedMode, $stateParams.activity);
-    console.log(dashdata.activities[$stateParams.activity]);
 
     this.DogData.getAllDogs().$promise
       .then(doglist => {
@@ -18,7 +16,6 @@ class CaretakerComponent {
         return doglist;
       })
       .then(doglist => {
-        console.log(doglist);
         var cats = {
           breeds: [],
           cities: [],

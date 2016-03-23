@@ -29,8 +29,6 @@ class SettingsController {
   updateSettings(form, callback) {
     this.submitted = true;
     if (form.$valid) {
-      console.log(form);
-      console.log(this.userSettings);
       this.User.updateUserSettings({id: this.userSettings._id}, {
         settings: this.userSettings
       }, () => {
@@ -39,7 +37,6 @@ class SettingsController {
         return this.safeCb(callback)(err);
       }).$promise
         .then((data) => {
-          console.log(data.settings);
           this.currentuserdata.updateUserSettings(data.settings);
           this.message = 'Settings successfully updated.';
           this.$state.go('profile');

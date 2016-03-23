@@ -24,7 +24,6 @@ class ProfileController {
 
       this.currentuserdata.getUserData()
         .then(userData => {
-          console.log(userData);
           this.userInfo = {
             _id: userData._id,
             name: userData.name,
@@ -40,7 +39,6 @@ class ProfileController {
         .then((userID) => {
           DogData.getOwnDogs({ id: userID}).$promise
           .then(dogs => {
-            console.log(dogs);
             this.usersDogs = dogs;
           })
         })
@@ -61,7 +59,6 @@ class ProfileController {
 
   updateProfile(form, callback) {
     this.submitted = true;
-    console.log(form);
     if (form.$valid) {
       this.User.updateProfile({ id: this.userInfo._id}, {
         user: this.userInfo
@@ -71,7 +68,6 @@ class ProfileController {
         return this.safeCb(callback)(err);
       }).$promise
         .then((data) => {
-          console.log(data.user);
           this.currentuserdata.updateUser(data.user);
           this.message = 'Profile successfully updated.';
           this.$state.reload();
@@ -84,9 +80,7 @@ class ProfileController {
   }
 
   connectTimekit() {
-    // this.Timekit.createAccount();
     this.$window.open(`https://api.timekit.io/v2/accounts/google/signup?Timekit-App=barknb&callback=${this.serverApi}/api/timekit/callback`, 'Timekit Auth', 'height=600,width=400');
-    // console.log(this.$window);
   }
 
 }

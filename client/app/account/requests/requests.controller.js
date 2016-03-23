@@ -23,7 +23,6 @@ class RequestController {
   loadRequests() {
     this.Timekit.getRequests({id: this.$stateParams.id}).$promise
       .then(requests => {
-        console.log(requests);
         this.requests = requests;
         if (requests.length === 0) {
           this.noRequests = 'You currently have no reuqests';
@@ -34,7 +33,6 @@ class RequestController {
   loadEvents() {
     this.Timekit.getEvents({id: this.$stateParams.id}, {start: this.moment.utc(Date.now()).format(), end: this.moment.utc(Date.now()).add(2, 'weeks').format()}).$promise
       .then(events => {
-        console.log(events);
         this.events = events;
         if (events.length === 0) {
           this.noEvents = 'What...? Your dogs schedule is wide open!';
@@ -45,7 +43,6 @@ class RequestController {
   confirmRequest(action, requestNum) {
     this.Timekit.takeAction({id: this.$stateParams.id, action: action, requestID: requestNum}).$promise
       .then(confirmation => {
-        console.log(confirmation);
         this.loadRequests();
       })
   }
