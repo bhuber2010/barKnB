@@ -20,19 +20,19 @@ angular.module('barKnBApp')
         id: 'dogwalk',
         name: 'Dog Walking',
         thumbnail: '../assets/images/dog-walk.jpeg',
-        details: 'Quick description'
+        details: '"Fido just wants to play"'
       },
       shortcare: {
         id: 'shortcare',
         name: 'Short-term Care',
         thumbnail: '../assets/images/dog-sitting.jpg',
-        details: 'Quick description'
+        details: '"We\'re out for the weekend"'
       },
       longcare: {
         id: 'longcare',
         name: 'Long-term Care',
         thumbnail: '../assets/images/dogs-playing.jpg',
-        details: 'Quick description'
+        details: '"We\'re going to Europe..."'
       }
     };
 
