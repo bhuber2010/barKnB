@@ -4,15 +4,22 @@
 
 class WelcomeComponent {
 
-  constructor($state, $document, $http, socket, Auth) {
+  constructor($state, $rootScope, $document, $http, socket, Auth) {
     this.$http = $http;
+    this.$rootScope = $rootScope;
     this.socket = socket;
     this.Auth = Auth;
 
     $document.find('body').removeClass('tint').addClass('prelogin')
 
-    this.loggedIn = Auth.isLoggedIn();
+    $rootScope.loggedIn = Auth.isLoggedIn();
 
+    console.log($rootScope.loggedIn);
+
+  }
+
+  $onInit() {
+    this.$rootScope.loggedIn = this.Auth.isLoggedIn();
   }
 
 }

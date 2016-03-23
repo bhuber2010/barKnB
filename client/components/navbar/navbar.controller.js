@@ -26,7 +26,6 @@ class NavbarController {
 
     this.currentuserdata.getUserData()
       .then(userData => {
-        console.log(userData);
         this.userInfo = {
           _id: userData._id,
           name: userData.name,
