@@ -27,10 +27,7 @@ module.exports = function(config) {
       'client/bower_components/angular-bootstrap-switch/dist/angular-bootstrap-switch.js',
       'client/bower_components/flow.js/dist/flow.js',
       'client/bower_components/ng-flow/dist/ng-flow.js',
-      'client/bower_components/cloudinary-core/cloudinary-core.js',
-      'client/bower_components/cloudinary_ng/js/angular.cloudinary.js',
       'client/bower_components/moment/moment.js',
-      'client/bower_components/angular-moment/angular-moment.js',
       'client/bower_components/ng-lodash/build/ng-lodash.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower

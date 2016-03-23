@@ -1,6 +1,6 @@
-# bar-kn-b
+# BARKnB
 
-This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 3.4.0.
+A place for dog owners as well as dog lovers to come together, help each other out, and experience some love from our 4 legged friends. Instead of taking your dog to the kennel when you go out of town, tap into the dog loving community--it's a give and take model, so don't worry about per day charges. Are you a dog lover, but it's not the right time to have one of your own full time? Enter BARKnB and find a furry companion to spend time with.
 
 ## Getting Started
 
