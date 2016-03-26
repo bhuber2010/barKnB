@@ -29,6 +29,7 @@ module.exports = function(config) {
       'client/bower_components/ng-flow/dist/ng-flow.js',
       'client/bower_components/moment/moment.js',
       'client/bower_components/ng-lodash/build/ng-lodash.js',
+      'client/bower_components/gmaps/gmaps.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'node_modules/socket.io-client/socket.io.js',
