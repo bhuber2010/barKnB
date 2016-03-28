@@ -7,7 +7,7 @@
     </div>
     <div class="">
       <label class="" for="city-filter">City</label>
-      <select class="form-control" name="city-filter" ng-model="ct.selectedCity">
+      <select class="form-control" name="city-filter" ng-model="ct.selectedCity" ng-change="ct.selectedCityChanged(ct.selectedCity)">
         <option value="">All</option>
         <option ng-repeat="city in ct.cities" value="{{city}}">{{city}}</option>
       </select>

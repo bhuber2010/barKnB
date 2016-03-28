@@ -5,6 +5,7 @@ class CaretakerComponent {
   constructor($window, $timeout, dashdata, DogData, $state, $stateParams, lodash) {
     this.lodash = lodash;
     this.GMaps = $window.GMaps;
+    this.google = $window.google;
     this.dashdata = dashdata;
     this.DogData = DogData;
     this.$timeout = $timeout;
@@ -13,18 +14,19 @@ class CaretakerComponent {
     this.selectedBreed = '';
     this.selectedCity = '';
     this.selectedState = '';
-    this.mapViewToggle = false;
+    this.mapViewToggle = true;
 
     this.map = new this.GMaps({
       div: '#map',
       lat: 39.7392360,
       lng: -104.9902510,
-      zoom: 12
+      zoom: 4
     });
 
     this.GMaps.geolocate({
       success: position => {
         this.map.setCenter(position.coords.latitude, position.coords.longitude);
+        this.map.zoomIn(8);
       },
       error: error => {
         alert('Geolocation failed: ', error.message);
@@ -74,8 +76,20 @@ class CaretakerComponent {
 
   toggleMap() {
     this.mapViewToggle = !this.mapViewToggle;
-    console.log(this.map);
-    this.map.refresh();
+    this.google.maps.event.trigger(this.map,'resize');
+  }
+
+  selectedCityChanged(city) {
+    this.GMaps.geocode({
+      address: `${city}`,
+      callback: (results, status) => {
+        console.log(status, results);
+        if (status == 'OK') {
+          var latlng = results[0].geometry.location;
+          this.map.setCenter(latlng.lat(), latlng.lng())
+        }
+      }
+    })
   }
 
   selectedStateChanged() {
