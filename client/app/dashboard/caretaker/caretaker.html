@@ -14,7 +14,7 @@
     </div>
     <div class="">
       <label class="" for="state-filter">State</label>
-      <select class="form-control" name="state-filter" ng-model="ct.selectedState">
+      <select class="form-control" name="state-filter" ng-model="ct.selectedState" ng-change="ct.selectedStateChanged()">
         <option value="">All</option>
         <option ng-repeat="state in ct.states" value="{{state}}">{{state}}</option>
       </select>
@@ -26,8 +26,11 @@
         <option ng-repeat="breed in ct.breeds" value="{{breed}}">{{breed}}</option>
       </select>
     </div>
+    <div class="">
+      <button class="btn btn-lg btn-primary" type="button" name="togglemap" ng-click="ct.toggleMap()">Toggle Map</button>
+    </div>
   </div>
-  <div class="dog-list">
+  <div ng-hide="ct.mapViewToggle" class="dog-list">
     <div ui-sref="schedule({id: dog._id, activity: ct.$stateParams.activity})" class="thumbnail" ng-repeat="dog in ct.dogs | filter:ct.searchDogs | filter: ct.selectedCity | filter: ct.selectedState | filter:ct.selectedBreed">
       <img src="{{dog.photo}}" alt="{{dog.name}}">
       <div class="caption">
@@ -35,5 +38,8 @@
         <p>{{dog.bio}}</p>
       </div>
     </div>
+  </div>
+  <div ng-show="ct.mapViewToggle" class="">
+    <div id="map"></div>
   </div>
 </div>
