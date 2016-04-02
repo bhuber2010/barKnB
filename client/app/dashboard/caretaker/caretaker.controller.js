@@ -29,10 +29,10 @@ class CaretakerComponent {
         this.map.zoomIn(8);
       },
       error: error => {
-        alert('Geolocation failed: ', error.message);
+        console.log('Geolocation failed: ', error.message);
       },
       not_supported: () => {
-        alert("Your browser does not support geolocation");
+        console.log('Your browser does not support geolocation');
       }
     });
 
@@ -49,10 +49,10 @@ class CaretakerComponent {
         };
         doglist.forEach(dog => {
           if (!dog.owner_user.city) {
-            dog.owner_user.city = 'Unknown';
+            dog.owner_user.city = 'Timbuktu';
           }
           if (!dog.owner_user.state) {
-            dog.owner_user.state = 'Unknown';
+            dog.owner_user.state = 'Mali';
           }
           cats.breeds.push(dog.breed.toUpperCase());
           cats.cities.push(dog.owner_user.city.toUpperCase());
@@ -69,7 +69,7 @@ class CaretakerComponent {
         return this.map;
       })
       .then((map) => {
-        console.log(this.map);
+        // console.log(this.map);
       })
 
   }
@@ -83,10 +83,13 @@ class CaretakerComponent {
     this.GMaps.geocode({
       address: `${city}`,
       callback: (results, status) => {
-        console.log(status, results);
-        if (status == 'OK') {
+        if (status == 'OK' && city !== null) {
           var latlng = results[0].geometry.location;
+          this.map.setZoom(12);
           this.map.setCenter(latlng.lat(), latlng.lng())
+        } else {
+          this.map.setZoom(2);
+          this.map.setCenter(37.0902400, -95.7128910);
         }
       }
     })
@@ -101,16 +104,14 @@ class CaretakerComponent {
       filteredDogs.forEach((dog, i) => {
         this.mapResults(dog, this.$stateParams.activity);
         if (filteredDogs.length - 1 == i) {
-          console.log(this.map);
-          // this.map.fitZoom();
+          // this.map.setZoom(12);
         }
       })
     } else {
       this.dogs.forEach((dog, i) => {
         this.mapResults(dog, this.$stateParams.activity);
         if (this.dogs.length - 1 == i) {
-          console.log(this.map);
-          // this.map.fitZoom();
+          // this.map.setZoom(4);
         }
       })
     }

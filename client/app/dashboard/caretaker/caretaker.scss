@@ -60,5 +60,12 @@ div.dog-schedule {
 
 #map {
   width: 1150px;
-  height: 800px;
+  height: 500px;
+}
+
+@media(min-width: 1080px) {
+  #map {
+    width: 1150px;
+    height: 800px;
+  }
 }
