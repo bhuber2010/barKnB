@@ -24,11 +24,8 @@ class CaretakerComponent {
     });
 
     this.oms = new OverlappingMarkerSpiderfier(this.map.map);
-
-    this.iw = new google.maps.InfoWindow();
     this.oms.addListener('click', (marker, event) => {
-      this.iw.setContent(marker.desc);
-      this.iw.open(map, marker);
+      this.$state.go('schedule', {id: marker.details.id, activity: marker.details.activity})
     });
 
     this.GMaps.geolocate({
@@ -163,11 +160,10 @@ class CaretakerComponent {
             icon : {
               url : '../../../assets/images/dog_icon.png'
             },
-            click:(e) => {
-              if (e._omsData) {
-                this.$state.go('schedule', {id: dogObj._id, activity: activity})
-              }
-            },
+            details: {id: dogObj._id, activity: activity},
+            // click:(e) => {
+            //   this.$state.go('schedule', {id: dogObj._id, activity: activity})
+            // },
             mouseover: function(e) {
               this.infoWindow.open(this.map, this);
             },
