@@ -23,6 +23,14 @@ class CaretakerComponent {
       zoom: 4
     });
 
+    this.oms = new OverlappingMarkerSpiderfier(this.map.map);
+
+    this.iw = new google.maps.InfoWindow();
+    this.oms.addListener('click', (marker, event) => {
+      this.iw.setContent(marker.desc);
+      this.iw.open(map, marker);
+    });
+
     this.GMaps.geolocate({
       success: position => {
         this.map.setCenter(position.coords.latitude, position.coords.longitude);
@@ -95,6 +103,28 @@ class CaretakerComponent {
     })
   }
 
+  selectedBreedChanged() {
+    this.map.removeMarkers();
+    if (this.selectedBreed) {
+      var filteredDogs = this.lodash.filter(this.dogs, dog => {
+        return dog.breed.toLowerCase() == this.selectedBreed.toLowerCase()
+      });
+      filteredDogs.forEach((dog, i) => {
+        this.mapResults(dog, this.$stateParams.activity);
+        if (filteredDogs.length - 1 == i) {
+          // this.map.setZoom(12);
+        }
+      })
+    } else {
+      this.dogs.forEach((dog, i) => {
+        this.mapResults(dog, this.$stateParams.activity);
+        if (this.dogs.length - 1 == i) {
+          // this.map.setZoom(4);
+        }
+      })
+    }
+  }
+
   selectedStateChanged() {
     this.map.removeMarkers();
     if (this.selectedState) {
@@ -123,7 +153,7 @@ class CaretakerComponent {
       callback: (results, status) => {
         if (status == 'OK') {
           var latlng = results[0].geometry.location;
-          this.map.addMarker({
+          var marker = this.map.addMarker({
             lat: latlng.lat(),
             lng: latlng.lng(),
             title: dogObj.name,
@@ -134,7 +164,9 @@ class CaretakerComponent {
               url : '../../../assets/images/dog_icon.png'
             },
             click:(e) => {
-              this.$state.go('schedule', {id: dogObj._id, activity: activity})
+              if (e._omsData) {
+                this.$state.go('schedule', {id: dogObj._id, activity: activity})
+              }
             },
             mouseover: function(e) {
               this.infoWindow.open(this.map, this);
@@ -143,6 +175,7 @@ class CaretakerComponent {
               this.infoWindow.close();
             }
           });
+          this.oms.addMarker(marker);
         }
       }
     });

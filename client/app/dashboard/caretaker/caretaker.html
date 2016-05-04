@@ -21,7 +21,7 @@
     </div>
     <div class="">
       <label class="" for="breed-filter">Breed</label>
-      <select class="form-control" name="breed-filter" ng-model="ct.selectedBreed">
+      <select class="form-control" name="breed-filter" ng-model="ct.selectedBreed" ng-change="ct.selectedBreedChanged()">
         <option value="">All</option>
         <option ng-repeat="breed in ct.breeds" value="{{breed}}">{{breed}}</option>
       </select>
