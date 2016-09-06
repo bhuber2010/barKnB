@@ -23,7 +23,7 @@ class CaretakerComponent {
       zoom: 4
     });
 
-    this.oms = new OverlappingMarkerSpiderfier(this.map.map);
+    this.oms = new $window.OverlappingMarkerSpiderfier(this.map.map);
     this.oms.addListener('click', (marker, event) => {
       this.$state.go('schedule', {id: marker.details.id, activity: marker.details.activity})
     });
